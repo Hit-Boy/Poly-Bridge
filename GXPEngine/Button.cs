@@ -47,7 +47,7 @@ class Button : GameObject
         }
         else
         {
-            visualButton.SetColor(0.7f, 0.7f, 0.7f);
+            visualButton.SetColor(0.9f, 0.9f, 0.9f);
         }
     }
 }
