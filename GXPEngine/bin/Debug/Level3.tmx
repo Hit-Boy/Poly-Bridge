@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="3" nextobjectid="1">
+ <imagelayer id="2" name="Background">
+  <image source="Level3_Background.jpg" width="1920" height="1080"/>
+ </imagelayer>
+</map>

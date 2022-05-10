@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="20">
+ <imagelayer id="2" name="Background">
+  <image source="Level1_Background.png" width="1920" height="1080"/>
+ </imagelayer>
+ <objectgroup id="4" name="Start Point">
+  <object id="8" type="StartPoint" x="170.667" y="133.333" width="44" height="45.3333"/>
+ </objectgroup>
+ <objectgroup id="5" name="Finish Point">
+  <object id="11" type="FinishPoint" x="644" y="442.667" width="45.3333" height="46.6667"/>
+ </objectgroup>
+ <objectgroup id="6" name="Platform Points">
+  <object id="13" type="LevelPlatformPoint" x="533.333" y="300" width="42.6667" height="44">
+   <ellipse/>
+  </object>
+  <object id="15" type="LevelPlatformPoint" x="296" y="201.333" width="42.6667" height="44">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="Buttons">
+  <object id="18" type="Button" x="157.167" y="452.5" width="61.6667" height="35.6667">
+   <properties>
+    <property name="Action" value="Run Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
+  </object>
+  <object id="19" type="Button" x="261.167" y="455.167" width="61.6667" height="35.6667">
+   <properties>
+    <property name="Action" value="Edit Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
+  </object>
+ </objectgroup>
+</map>

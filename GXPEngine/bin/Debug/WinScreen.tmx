@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="4" nextobjectid="3">
+ <imagelayer id="2" name="Background">
+  <image source="WinScreen.png" width="960" height="540"/>
+ </imagelayer>
+ <objectgroup id="3" name="Buttons" offsetx="25" offsety="4">
+  <properties>
+   <property name="action" value="nextLevel"/>
+  </properties>
+  <object id="1" type="Button" x="536.5" y="239" width="272.5" height="226.5">
+   <properties>
+    <property name="Action" value="Next Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="37" wrap="1" color="#ffffff"></text>
+  </object>
+ </objectgroup>
+</map>
