@@ -10,6 +10,10 @@ public class VerletBody {
 		constraint = new List<VerletConstraint> ();
 	}
 
+	public void RemoveLastPoint()
+    {
+		point.RemoveAt(point.Count - 1);
+    }
 	public void AddPoint(VerletPoint newPoint) {
 		point.Add(newPoint);
 	}

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="20">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="21">
  <imagelayer id="2" name="Background">
   <image source="Level1_Background.png" width="1920" height="1080"/>
  </imagelayer>
+ <objectgroup id="8" name="Red Zone">
+  <object id="20" type="RedZone" x="380" y="25.3333" width="324" height="137.333"/>
+ </objectgroup>
  <objectgroup id="4" name="Start Point">
   <object id="8" type="StartPoint" x="170.667" y="133.333" width="44" height="45.3333"/>
  </objectgroup>

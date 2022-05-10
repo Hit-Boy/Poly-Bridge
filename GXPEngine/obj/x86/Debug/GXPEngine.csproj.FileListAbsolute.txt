@@ -22,3 +22,9 @@ C:\Users\chrio\Desktop\Project 4\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.c
 C:\Users\chrio\Desktop\Project 4\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\chrio\Desktop\Project 4\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.exe
 C:\Users\chrio\Desktop\Project 4\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\bin\Debug\GXPEngine.exe
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\bin\Debug\GXPEngine.pdb
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.csproj.AssemblyReference.cache
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.exe
+C:\Users\chrio\Desktop\New Poly Bridge\Poly-Bridge\GXPEngine\obj\x86\Debug\GXPEngine.pdb

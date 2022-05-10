@@ -87,6 +87,7 @@
     <Compile Include="PlatformBoundary.cs" />
     <Compile Include="PlayerEditingMode.cs" />
     <Compile Include="PlayerPlatformPoint.cs" />
+    <Compile Include="RedZone.cs" />
     <Compile Include="StartPoint.cs" />
     <Compile Include="Vec2.cs" />
     <Compile Include="VerletBody.cs" />
