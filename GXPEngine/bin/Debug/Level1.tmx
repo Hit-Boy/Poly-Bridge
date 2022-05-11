@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="21">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="25">
  <imagelayer id="2" name="Background">
   <image source="Level1_Background.png" width="1920" height="1080"/>
  </imagelayer>
@@ -13,10 +13,10 @@
   <object id="11" type="FinishPoint" x="644" y="442.667" width="45.3333" height="46.6667"/>
  </objectgroup>
  <objectgroup id="6" name="Platform Points">
-  <object id="13" type="LevelPlatformPoint" x="533.333" y="300" width="42.6667" height="44">
+  <object id="23" type="LevelPlatformPoint" x="233.333" y="200" width="12" height="9.33333">
    <ellipse/>
   </object>
-  <object id="15" type="LevelPlatformPoint" x="296" y="201.333" width="42.6667" height="44">
+  <object id="24" type="LevelPlatformPoint" x="572" y="400" width="10.6667" height="10.6667">
    <ellipse/>
   </object>
  </objectgroup>

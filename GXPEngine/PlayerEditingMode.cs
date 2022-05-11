@@ -19,17 +19,22 @@ public class PlayerEditingMode : GameObject
     Vec2 deltaVec;
 
     bool pressedLastFrame = false;
+    bool pointCreated = false;
 
     public bool isEditing = true;
 
+    List<LevelPlatformPoint> existingPoints = new List<LevelPlatformPoint>();
     List<Platform> platforms = new List<Platform>();
     public PlayerEditingMode()
     {
         AddChild(drawBody);
+
     }
 
     void CreateObject()
     {
+        int pointDistance = 15;
+        existingPoints = game.FindObjectsOfType<LevelPlatformPoint>().ToList();
         mousePos = new Vec2(Input.mouseX, Input.mouseY);
         redZone = game.FindObjectOfType<RedZone>();
 
@@ -37,15 +42,40 @@ public class PlayerEditingMode : GameObject
         {
             if (pressedLastFrame == false)
             {
-                pointOne = mousePos;
-                platformBody.AddPoint(new VerletPoint(pointOne.x, pointOne.y, false));
-                boundary = new PlatformBoundary(pointOne);
-                AddChild(boundary);
+                foreach (VerletPoint point in platformBody.point) {
+                    deltaVec = mousePos - point;
+                    if (deltaVec.Length() <= pointDistance)
+                    {
+                        pointOne.x = point.x;
+                        pointOne.y = point.y;
+                        platformBody.AddPoint(new VerletPoint(pointOne.x, pointOne.y, false));
+                        boundary = new PlatformBoundary(pointOne);
+                        AddChild(boundary);
+                        pointCreated = true;
+                        break;
+                    }
+                }
+
+                if (!pointCreated) {
+                    foreach (LevelPlatformPoint point in existingPoints)
+                    {
+                        deltaVec = mousePos - point.position;
+                        if (deltaVec.Length() <= pointDistance)
+                        {
+                            pointOne = point.position;
+                            platformBody.AddPoint(new VerletPoint(pointOne.x, pointOne.y, false));
+                            boundary = new PlatformBoundary(pointOne);
+                            AddChild(boundary);
+                            pointCreated = true;
+                            break;
+                        }
+                    }
+                }
             }
             pressedLastFrame = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && isEditing)
+        if (Input.GetMouseButtonUp(0) && isEditing && pointCreated)
         {
             deltaVec = mousePos - pointOne;
 
@@ -71,6 +101,7 @@ public class PlayerEditingMode : GameObject
                 drawBody.DrawVerlet(platformBody);
             }
             RemoveChild(boundary);
+            pointCreated = false;
         }
 
         pressedLastFrame = false;
