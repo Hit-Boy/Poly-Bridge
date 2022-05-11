@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class MyGame : Game
 {
-	public int levelTracker = 0;
+	public int levelTracker = -1;
 	public MyGame() : base(800, 600, false)	// Final: 1920, 1080, true
 	{
-		LoadLevel("Level1.tmx");
+		LoadLevel("MainMenu.tmx");
 	}
 
 	void DestroyAll()

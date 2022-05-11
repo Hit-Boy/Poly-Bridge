@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="4" nextobjectid="3">
  <imagelayer id="2" name="Background">
-  <image source="Level2_Background.jpg" width="1920" height="1080"/>
+  <image source="Level2_Background.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="Buttons">
   <object id="1" type="Button" x="185.167" y="339.833" width="55" height="37.6667">

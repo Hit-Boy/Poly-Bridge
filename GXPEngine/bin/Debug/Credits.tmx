@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="5" nextobjectid="9">
+ <imagelayer id="2" name="Background">
+  <image source="menuBackground.png" width="1920" height="1080"/>
+ </imagelayer>
+ <objectgroup id="3" name="Text">
+  <object id="1" x="50.1667" y="66.5" width="270" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Jose Peiro</text>
+  </object>
+  <object id="2" x="56.1667" y="166.5" width="270" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Toon Veen</text>
+  </object>
+  <object id="3" x="0.166667" y="272.5" width="396" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Anastasia Lalaeva</text>
+  </object>
+  <object id="4" x="413.167" y="62.5" width="433" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Fleur Spannenberg</text>
+  </object>
+  <object id="5" x="496.167" y="162.5" width="270" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Karina Gusa</text>
+  </object>
+  <object id="6" x="498.167" y="273.5" width="270" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Dan Frolov</text>
+  </object>
+  <object id="7" x="-13.8333" y="363.5" width="455" height="54">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="48" wrap="1" color="#ffffff" halign="center" valign="center">Orestis Christoforou</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Buttons">
+  <object id="8" type="Button" x="280.5" y="485.5" width="245" height="91">
+   <properties>
+    <property name="Action" value="Back"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="64" wrap="1" color="#ffffff" halign="center" valign="center">Back</text>
+  </object>
+ </objectgroup>
+</map>

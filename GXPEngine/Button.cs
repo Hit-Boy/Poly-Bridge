@@ -35,6 +35,12 @@ class Button : GameObject
         }else if(action == "Restart Level")
         {
             ((MyGame)game).LoadLevel("Level" + ((MyGame)game).levelTracker + ".tmx", true);
+        }else if(action == "Credits")
+        {
+            ((MyGame)game).LoadLevel("Credits.tmx", true);
+        }else if(action == "Back")
+        {
+            ((MyGame)game).LoadLevel("MainMenu.tmx", true);
         }
     }
 
