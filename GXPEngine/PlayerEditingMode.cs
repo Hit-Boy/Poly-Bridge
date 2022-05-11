@@ -33,7 +33,7 @@ public class PlayerEditingMode : GameObject
 
     void CreateObject()
     {
-        int pointDistance = 15;
+        int pointDistance = 10;
         existingPoints = game.FindObjectsOfType<LevelPlatformPoint>().ToList();
         mousePos = new Vec2(Input.mouseX, Input.mouseY);
         redZone = game.FindObjectOfType<RedZone>();
@@ -107,6 +107,24 @@ public class PlayerEditingMode : GameObject
         pressedLastFrame = false;
     }
 
+    void DeleteObject()
+    {
+        int midPointDistance = 30;
+        if (Input.GetKeyUp(Key.BACKSPACE) && isEditing)
+        {
+            mousePos = new Vec2(Input.mouseX, Input.mouseY);
+
+            foreach (VerletConstraint cons in platformBody.constraint.ToList())
+            {
+                deltaVec = mousePos - cons.midPoint;
+                if (deltaVec.Length() <= midPointDistance)
+                {
+                    platformBody.constraint.Remove(cons);
+                    drawBody.DrawVerlet(platformBody);
+                }
+            }
+        }
+    }
 
     public void SetParent()
     {
@@ -116,5 +134,6 @@ public class PlayerEditingMode : GameObject
     void Update()
     {
         CreateObject();
+        DeleteObject();
     }
 }

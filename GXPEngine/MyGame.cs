@@ -20,11 +20,12 @@ public class MyGame : Game
 		}
 	}
 
-	public void LoadLevel(string filename)
+	public void LoadLevel(string filename, bool restartLevel = false)
 	{
 		DestroyAll(); //Destroy all children before creating new level
 		AddChild(new Level(filename));
-		++levelTracker;
+		if(!restartLevel)
+			++levelTracker;
 	}
 
 	public void LoadWinScreen()

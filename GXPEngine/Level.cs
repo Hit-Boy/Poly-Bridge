@@ -40,11 +40,14 @@ public class Level : GameObject
 
     public void GameStatePlay()
     {
+        // Game is in Play Mode
         playerEditingMode.isEditing = false;
     }
 
     public void GameStateEdit()
     {
+        // Game is in Edit Mode
+        //TODO: Player position reset + Platforms reset to original state
         playerEditingMode.isEditing = true;
     }
 

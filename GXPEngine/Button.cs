@@ -32,6 +32,9 @@ class Button : GameObject
         }else if(action == "Edit Level")
         {
             level.GameStateEdit();
+        }else if(action == "Restart Level")
+        {
+            ((MyGame)game).LoadLevel("Level" + ((MyGame)game).levelTracker + ".tmx", true);
         }
     }
 

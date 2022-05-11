@@ -2,12 +2,15 @@
 public class VerletConstraint {
 	public VerletPoint one;
 	public VerletPoint two;
+	public Vec2 midPoint;
 	public readonly float length;
 
 	public VerletConstraint(VerletPoint pOne, VerletPoint pTwo) {
 		one = pOne;
 		two = pTwo;
 		length = (pTwo.position - pOne.position).Length ();
+		midPoint.x = (one.x + two.x) / 2;
+		midPoint.y = (one.y + two.y) / 2;
 	}
 
 	public void Apply() {

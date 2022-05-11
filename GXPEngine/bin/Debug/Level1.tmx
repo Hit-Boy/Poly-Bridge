@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="25">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="26">
  <imagelayer id="2" name="Background">
   <image source="Level1_Background.png" width="1920" height="1080"/>
  </imagelayer>
@@ -32,6 +32,12 @@
     <property name="Action" value="Edit Level"/>
    </properties>
    <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
+  </object>
+  <object id="25" type="Button" x="369.167" y="455.167" width="104.333" height="35.6667">
+   <properties>
+    <property name="Action" value="Restart Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
   </object>
  </objectgroup>
 </map>
