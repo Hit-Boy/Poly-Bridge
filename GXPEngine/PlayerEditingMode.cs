@@ -110,7 +110,7 @@ public class PlayerEditingMode : GameObject
                 platformBody.point.Add(new VerletPoint(pointTwoPos.x, pointTwoPos.y, false));
                 pointTwoIndex = platformBody.point.Count - 1;
             }
-
+            pointFound = false;
             if (redZone == null || redZone != null && !redZone.HitTestPoint(pointTwoPos.x, pointTwoPos.y))
             {
                 platformBody.AddConstraint(pointOneIndex, pointTwoIndex);

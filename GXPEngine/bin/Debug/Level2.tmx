@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="7" nextobjectid="7">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="9">
  <imagelayer id="2" name="Background">
   <image source="Level2_Background.png" width="1920" height="1080"/>
  </imagelayer>
+ <objectgroup id="7" name="Platform Points">
+  <object id="7" type="LevelPlatformPoint" x="153.333" y="130.667">
+   <ellipse/>
+  </object>
+  <object id="8" type="LevelPlatformPoint" x="394.667" y="226.667">
+   <ellipse/>
+  </object>
+ </objectgroup>
  <objectgroup id="4" name="Start Point">
   <object id="3" type="StartPoint" x="86.6667" y="84" width="34.6667" height="33.3333"/>
  </objectgroup>

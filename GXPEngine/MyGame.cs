@@ -5,9 +5,11 @@ using System.Collections.Generic;
 
 public class MyGame : Game
 {
+	Sound backgroundMusic = new Sound("backgroundMusic.mp3", true, true);
 	public int levelTracker = -1;
 	public MyGame() : base(800, 600, false)	// Final: 1920, 1080, true
 	{
+		backgroundMusic.Play();
 		LoadLevel("MainMenu.tmx");
 	}
 

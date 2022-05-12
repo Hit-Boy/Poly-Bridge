@@ -13,7 +13,6 @@ public class WinScreen : GameObject
     {
         loader = new TiledLoader("WinScreen.tmx");
         loader.OnObjectCreated += OnSpriteCreated; //Subscription to this method allows for initializaiton of buttons
-
         CreateWinScreen();
     }
 

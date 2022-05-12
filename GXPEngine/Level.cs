@@ -7,6 +7,7 @@ using TiledMapParser;
 
 public class Level : GameObject
 {
+    Sound winMusic = new Sound("LevelPassed.mp3");
     TiledLoader loader;
     PlayerEditingMode playerEditingMode;
 
@@ -68,6 +69,7 @@ public class Level : GameObject
     void LevelWonScreen()
     {
         ((MyGame)game).LoadWinScreen();
+        winMusic.Play();
     }
 
     public void GameStatePlay()
@@ -79,7 +81,6 @@ public class Level : GameObject
     public void GameStateEdit()
     {
         // Game is in Edit Mode
-        //TODO: Player position reset + Platforms reset to original state
         playerEditingMode.isEditing = true;
     }
 
@@ -114,5 +115,8 @@ public class Level : GameObject
             }
             
         }
+
+        if (Input.GetKeyUp(Key.SPACE) && !playerEditingMode.isEditing)
+            LevelWonScreen();
     }
 }

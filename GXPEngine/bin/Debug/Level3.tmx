@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="10">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="12">
  <imagelayer id="2" name="Background">
   <image source="Level3_Background.png" width="1920" height="1080"/>
  </imagelayer>
@@ -36,5 +36,11 @@
  </objectgroup>
  <objectgroup id="7" name="RedZone">
   <object id="9" type="RedZone" x="362.667" y="-52" width="176" height="498.667"/>
+  <object id="10" type="LevelPlatformPoint" x="136" y="207">
+   <ellipse/>
+  </object>
+  <object id="11" type="LevelPlatformPoint" x="342" y="234">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

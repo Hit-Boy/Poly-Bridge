@@ -46,7 +46,7 @@ class Button : GameObject
 
     void Update()
     {
-        if(visualButton.HitTestPoint(Input.mouseX, Input.mouseY))
+        if (visualButton.HitTestPoint(Input.mouseX, Input.mouseY))
         {
             visualButton.SetColor(1, 1, 1);
             if (Input.GetMouseButtonDown(0))

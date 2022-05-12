@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="1">
- <imagelayer id="2" name="Background"/>
- <objectgroup id="3" name="Text"/>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="9" nextobjectid="13">
+ <imagelayer id="2" name="Background">
+  <image source="Level4_Background.png" width="1920" height="1080"/>
+ </imagelayer>
+ <objectgroup id="3" name="Text">
+  <object id="6" x="367.833" y="266.5" width="153.667" height="32.3333">
+   <text fontfamily="Poor Richard" pixelsize="29" wrap="1" color="#ffffff">Level 3 (hard)</text>
+  </object>
+  <object id="7" type="Button" x="57.1667" y="414.5" width="56.3333" height="32.3333">
+   <properties>
+    <property name="Action" value="Run Level"/>
+   </properties>
+   <text fontfamily="Poor Richard" pixelsize="29" wrap="1" color="#ffffff">Play</text>
+  </object>
+  <object id="11" type="Button" x="149.167" y="411.833" width="56.3333" height="32.3333">
+   <properties>
+    <property name="Action" value="Edit Level"/>
+   </properties>
+   <text fontfamily="Poor Richard" pixelsize="29" wrap="1" color="#ffffff">Edit</text>
+  </object>
+  <object id="12" type="Button" x="231.833" y="415.833" width="89.6667" height="32.3333">
+   <properties>
+    <property name="Action" value="Restart Level"/>
+   </properties>
+   <text fontfamily="Poor Richard" pixelsize="29" wrap="1" color="#ffffff">Restart</text>
+  </object>
+ </objectgroup>
  <objectgroup id="4" name="Buttons"/>
- <objectgroup id="5" name="RedZone"/>
- <objectgroup id="6" name="Start Point"/>
- <objectgroup id="7" name="Finish Point"/>
+ <objectgroup id="5" name="RedZone">
+  <object id="3" type="RedZone" x="488" y="-6" width="306" height="556"/>
+ </objectgroup>
+ <objectgroup id="8" name="Platform Points">
+  <object id="4" type="LevelPlatformPoint" x="206" y="240">
+   <ellipse/>
+  </object>
+  <object id="5" type="LevelPlatformPoint" x="448" y="342">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Start Point">
+  <object id="1" type="StartPoint" x="160" y="170" width="46" height="48"/>
+ </objectgroup>
+ <objectgroup id="7" name="Finish Point">
+  <object id="2" type="FinishPoint" x="650" y="374" width="46" height="50"/>
+ </objectgroup>
 </map>
