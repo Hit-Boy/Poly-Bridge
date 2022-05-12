@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="1">
+ <imagelayer id="2" name="Background"/>
+ <objectgroup id="3" name="Text"/>
+ <objectgroup id="4" name="Buttons"/>
+ <objectgroup id="5" name="RedZone"/>
+ <objectgroup id="6" name="Start Point"/>
+ <objectgroup id="7" name="Finish Point"/>
+</map>

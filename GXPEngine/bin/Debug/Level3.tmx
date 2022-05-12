@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="8" nextobjectid="10">
  <imagelayer id="2" name="Background">
   <image source="Level3_Background.png" width="1920" height="1080"/>
  </imagelayer>
+ <objectgroup id="3" name="Start Point">
+  <object id="1" type="StartPoint" x="92" y="166" width="28" height="32"/>
+ </objectgroup>
+ <objectgroup id="4" name="FinishPoint">
+  <object id="2" type="FinishPoint" x="466.667" y="304.667" width="40" height="30"/>
+ </objectgroup>
+ <objectgroup id="5" name="Text">
+  <object id="4" x="239.833" y="50.5" width="280.333" height="40.3333">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 2 (medium)</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Buttons">
+  <object id="5" type="Button" x="95.8333" y="334.5" width="87" height="47">
+   <properties>
+    <property name="Action" value="Run Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
+  </object>
+  <object id="6" type="Button" x="337.167" y="338.5" width="121.667" height="47">
+   <properties>
+    <property name="Action" value="Restart Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
+  </object>
+  <object id="8" type="Button" x="225.167" y="337.167" width="87" height="47">
+   <properties>
+    <property name="Action" value="Edit Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="RedZone">
+  <object id="9" type="RedZone" x="362.667" y="-52" width="176" height="498.667"/>
+ </objectgroup>
 </map>

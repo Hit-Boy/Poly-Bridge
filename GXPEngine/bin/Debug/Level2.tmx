@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="4" nextobjectid="3">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="7" nextobjectid="7">
  <imagelayer id="2" name="Background">
   <image source="Level2_Background.png" width="1920" height="1080"/>
  </imagelayer>
+ <objectgroup id="4" name="Start Point">
+  <object id="3" type="StartPoint" x="86.6667" y="84" width="34.6667" height="33.3333"/>
+ </objectgroup>
+ <objectgroup id="5" name="Finish Point">
+  <object id="4" type="FinishPoint" x="468" y="253.333" width="38.6667" height="28"/>
+ </objectgroup>
+ <objectgroup id="6" name="Text">
+  <object id="5" x="253.167" y="21.1667" width="292.333" height="55">
+   <text fontfamily="MS Shell Dlg 2" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 1 (easy)</text>
+  </object>
+ </objectgroup>
  <objectgroup id="3" name="Buttons">
   <object id="1" type="Button" x="185.167" y="339.833" width="55" height="37.6667">
    <properties>
@@ -15,6 +26,12 @@
     <property name="Action" value="Edit Level"/>
    </properties>
    <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff">Edit</text>
+  </object>
+  <object id="6" type="Button" x="393.167" y="342.5" width="96.3333" height="37.6667">
+   <properties>
+    <property name="Action" value="Restart Level"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff">Restart</text>
   </object>
  </objectgroup>
 </map>
