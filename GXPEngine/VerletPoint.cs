@@ -1,5 +1,4 @@
-﻿using TiledMapParser;
-public class VerletPoint {
+﻿public class VerletPoint {
 	public float x {
 		get {
 			return position.x;
@@ -27,14 +26,14 @@ public class VerletPoint {
 	public Vec2 acceleration;
 	public readonly bool _fixed;
 
-	public VerletPoint(Vec2 newPosition, bool pFixed=false, TiledObject obj = null) {
+	public VerletPoint(Vec2 newPosition, bool pFixed=false) {
 		oldPosition = newPosition;
 		position = newPosition;
 		acceleration = new Vec2();
 		_fixed = pFixed;
 	}
 
-	public VerletPoint (float px, float py, bool pFixed=false, TiledObject obj = null) : this (new Vec2 (px, py), pFixed) {}
+	public VerletPoint (float px, float py, bool pFixed=false) : this (new Vec2 (px, py), pFixed) {}
 
 	public void Step() {
 		if (_fixed) {

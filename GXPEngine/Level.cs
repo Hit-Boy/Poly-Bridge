@@ -8,8 +8,17 @@ using TiledMapParser;
 public class Level : GameObject
 {
     TiledLoader loader;
-    PlayerEditingMode playerEditingMode = new PlayerEditingMode();
+    PlayerEditingMode playerEditingMode;
 
+    VerletBody body;
+    Draw canvas;
+    Mover mover;
+    CollisionResolver collisionResolver;
+    private StartPoint startPoint;
+    private Vec2 startPointPosition;
+
+    private bool gravity = true;
+    
     public string currentLevelName;
 
     public Level(string filename)
@@ -17,12 +26,34 @@ public class Level : GameObject
         currentLevelName = filename;
         loader = new TiledLoader(filename);
         loader.OnObjectCreated += OnSpriteCreated; //Subscription to this method allows for initializaiton of buttons
+        
+        body = new VerletBody();
+        playerEditingMode = new PlayerEditingMode(body);
+        
+        canvas = new Draw(800, 600);
+        AddChild(canvas);
 
         AddChild(playerEditingMode);
         playerEditingMode.SetParent();
         CreateLevel();
+        startPoint = game.FindObjectOfType<StartPoint>();
+        
+        if(currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt" 
+           || currentLevelName != "EndGame.txt")
+            if(startPoint != null)
+                mover = new Mover(startPoint.position.x, startPoint.position.y);
+        
+        if(mover != null)
+            collisionResolver = new CollisionResolver(body, mover);
     }
+    
 
+    void DrawAll() {
+        canvas.Clear (System.Drawing.Color.Transparent);
+        canvas.DrawVerlet(body);
+        canvas.DrawMover(mover);
+    }
+    
     void CreateLevel()
     {
         loader.addColliders = false;
@@ -31,6 +62,7 @@ public class Level : GameObject
         loader.autoInstance = true;
         loader.addColliders = true;
         loader.LoadObjectGroups();
+
     }
 
     void LevelWonScreen()
@@ -62,10 +94,25 @@ public class Level : GameObject
 
     void Update()
     {
-        // Temporary
-        if(Input.GetKeyUp(Key.SPACE) && playerEditingMode.isEditing == false)
-        {
-            LevelWonScreen();
+        
+        if (!playerEditingMode.isEditing) {
+            collisionResolver.collisionThisFrame = false;
+            int iterationCount = 64;
+            if (gravity) {
+                body.AddAcceleration(new Vec2(0, 0.2f));
+                mover.AddAcceleration(new Vec2(0, 0.2f));
+                mover.MoveMover();
+                body.UpdateVerlet();
+
+                for (int i = 0; i < iterationCount; i++) {
+                    body.UpdateConstraints();
+                    collisionResolver.VerletBoundaries();
+                    collisionResolver.CollisionCheck();
+                }
+
+                DrawAll();
+            }
+            
         }
     }
 }

@@ -4,6 +4,7 @@ public class VerletConstraint {
 	public VerletPoint two;
 	public Vec2 midPoint;
 	public readonly float length;
+	public float mass = 0.5f;
 
 	public VerletConstraint(VerletPoint pOne, VerletPoint pTwo) {
 		one = pOne;
@@ -27,6 +28,5 @@ public class VerletConstraint {
 		} else if (one._fixed && !two._fixed) {
 			two.position += diff;
 		}
-		
 	}
 }

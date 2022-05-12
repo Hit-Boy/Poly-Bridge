@@ -18,7 +18,7 @@ public class LevelEditor : GameObject // Might Change
     List<string> startPoint = new List<string>(); // Index: 1
     List<string> finishPoint = new List<string>(); // Index: 2
     List<string> platforms = new List<string>(); // Index: 3
-    List<string> playerPlatormPoints = new List<string>(); // Index: 4
+    List<string> playerPlatformPoints = new List<string>(); // Index: 4
     List<string> levelPlatformPoints = new List<string>(); // Index: 5
 
     public LevelEditor()
@@ -44,7 +44,7 @@ public class LevelEditor : GameObject // Might Change
                 platforms.Add(levelObjects[i]);
             } else if (levelObjects[i].Contains("(4)"))
             {
-                playerPlatormPoints.Add(levelObjects[i]);
+                playerPlatformPoints.Add(levelObjects[i]);
             } else if (levelObjects[i].Contains("(5)"))
             {
                 levelPlatformPoints.Add(levelObjects[i]);

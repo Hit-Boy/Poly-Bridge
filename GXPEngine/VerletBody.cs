@@ -10,15 +10,11 @@ public class VerletBody {
 		constraint = new List<VerletConstraint> ();
 	}
 
-	public void RemoveLastPoint()
-    {
-		point.RemoveAt(point.Count - 1);
-    }
 	public void AddPoint(VerletPoint newPoint) {
 		point.Add(newPoint);
 	}
 
-	public void AddConstraint(int p1, int p2, float pStrength=1, bool pPush=true) {
+	public void AddConstraint(int p1, int p2) {
 		VerletConstraint c = new VerletConstraint (point [p1], point [p2]);
 		constraint.Add (c);
 	}
@@ -39,6 +35,11 @@ public class VerletBody {
 		foreach (VerletConstraint c in constraint) {
 			c.Apply ();
 		}
+	}
+	
+	public void RemoveLastPoint()
+	{
+		point.RemoveAt(point.Count - 1);
 	}
 }
 

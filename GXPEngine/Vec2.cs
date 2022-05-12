@@ -52,10 +52,6 @@ public struct Vec2
 		return result;
 	}
 
-	public static Vec2 operator -(Vec2 left, VerletPoint right){
-		return new Vec2(left.x - right.x, left.y - right.y);
-	}
-
 	public static Vec2 operator +(Vec2 left, Vec2 right) {
 		return new Vec2 (left.x + right.x, left.y + right.y);
 	}
@@ -146,6 +142,10 @@ public struct Vec2
 		return projection;
 	}
 
+	public static float FindCos(Vec2 vec1, Vec2 vec2) {
+		return vec1.DotProduct(vec2)/(vec1.Length() * vec2.Length());
+	}
+
 	// projects this on vec2
 	public Vec2 VecProjection(Vec2 vec2) {
 		Vec2 projection = new Vec2();
@@ -197,14 +197,20 @@ public struct Vec2
 
 	//let this bounce of vec2
 	public Vec2 VecReflect(Vec2 vec2, float bounciness) {
-		Print();
 		Vec2 result = new Vec2();
-		vec2.Print();
-		VecProjection(vec2).Print();
 		result = -1 * this + (1 + bounciness) * (VecProjection(vec2));
-		
 		return result;
 	}
-	
-	
+
+	//find center of 2 points
+	public static Vec2 FindCenter(Vec2 point1, Vec2 point2) {
+		Vec2 result = new Vec2();
+		float difX = point1.x - point2.x;
+		float difY = point1.y - point2.y;
+		result.x = point2.x + difX/2;
+		result.y = point2.y + difY/2;
+		return result;
+	}
+
+
 }

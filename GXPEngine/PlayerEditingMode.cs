@@ -25,25 +25,29 @@ public class PlayerEditingMode : GameObject
 
     List<LevelPlatformPoint> existingPoints = new List<LevelPlatformPoint>();
     List<Platform> platforms = new List<Platform>();
-    public PlayerEditingMode()
-    {
+    public PlayerEditingMode(VerletBody platformBody) {
+        this.platformBody = platformBody;
         AddChild(drawBody);
 
     }
 
+    void FindRedzone() {
+        redZone = game.FindObjectOfType<RedZone>();
+    }
+
     void CreateObject()
     {
-        int pointDistance = 10;
+        int pointDistance = 20;
         existingPoints = game.FindObjectsOfType<LevelPlatformPoint>().ToList();
         mousePos = new Vec2(Input.mouseX, Input.mouseY);
-        redZone = game.FindObjectOfType<RedZone>();
+        FindRedzone();
 
         if (Input.GetMouseButtonDown(0) && isEditing)
         {
             if (pressedLastFrame == false)
             {
                 foreach (VerletPoint point in platformBody.point) {
-                    deltaVec = mousePos - point;
+                    deltaVec = mousePos - point.position;
                     if (deltaVec.Length() <= pointDistance)
                     {
                         pointOne.x = point.x;
@@ -89,8 +93,8 @@ public class PlayerEditingMode : GameObject
             }
             else
                 pointTwo = mousePos;
-
-            if (redZone.HitTestPoint(pointTwo.x, pointTwo.y))
+            
+            if (redZone != null && redZone.HitTestPoint(pointTwo.x, pointTwo.y))
             {
                 platformBody.RemoveLastPoint();
             }

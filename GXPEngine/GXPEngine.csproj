@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Button.cs" />
+    <Compile Include="CollisionResolver.cs" />
+    <Compile Include="Draw.cs" />
     <Compile Include="FinishPoint.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LevelEditor.cs" />
@@ -45,6 +47,7 @@
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />
     <Compile Include="GXPEngine\AddOns\TiledLoader.cs" />
     <Compile Include="LevelPlatformPoint.cs" />
+    <Compile Include="Mover.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="GXPEngine\Core\Canvas.cs" />
     <Compile Include="GXPEngine\Game.cs" />
