@@ -1,4 +1,4 @@
-﻿public class VerletPoint {
+﻿public class VerletPoint{
 	public float x {
 		get {
 			return position.x;
