@@ -22,24 +22,24 @@
    <properties>
     <property name="Action" value="Run Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
   </object>
   <object id="19" type="Button" x="261.167" y="455.167" width="61.6667" height="35.6667">
    <properties>
     <property name="Action" value="Edit Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
   </object>
   <object id="25" type="Button" x="369.167" y="455.167" width="104.333" height="35.6667">
    <properties>
     <property name="Action" value="Restart Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
   </object>
  </objectgroup>
  <objectgroup id="9" name="Text">
   <object id="26" x="256.5" y="23.5" width="374" height="72">
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff" halign="center" valign="center">Introduction Level (simple)</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff" halign="center" valign="center">Introduction Level (simple)</text>
   </object>
  </objectgroup>
 </map>

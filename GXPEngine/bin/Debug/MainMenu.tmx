@@ -8,13 +8,13 @@
    <properties>
     <property name="Action" value="Next Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="64" wrap="1" color="#ffffff" halign="center" valign="center">Start</text>
+   <text fontfamily="Poor Richard" pixelsize="63" wrap="1" color="#ffffff" halign="center" valign="center">Start</text>
   </object>
   <object id="2" type="Button" x="250.5" y="291.833" width="240.333" height="66.6667">
    <properties>
     <property name="Action" value="Credits"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="64" wrap="1" color="#ffffff" halign="center" valign="center">Credits</text>
+   <text fontfamily="Poor Richard" pixelsize="63" wrap="1" color="#ffffff" halign="center" valign="center">Credits</text>
   </object>
  </objectgroup>
 </map>

@@ -11,7 +11,7 @@
  </objectgroup>
  <objectgroup id="6" name="Text">
   <object id="5" x="253.167" y="21.1667" width="292.333" height="55">
-   <text fontfamily="MS Shell Dlg 2" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 1 (easy)</text>
+   <text fontfamily="Poor Richard" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 1 (easy)</text>
   </object>
  </objectgroup>
  <objectgroup id="3" name="Buttons">
@@ -19,19 +19,19 @@
    <properties>
     <property name="Action" value="Run Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff">Play</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff">Play</text>
   </object>
   <object id="2" type="Button" x="305.167" y="339.833" width="55" height="37.6667">
    <properties>
     <property name="Action" value="Edit Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff">Edit</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff">Edit</text>
   </object>
   <object id="6" type="Button" x="393.167" y="342.5" width="96.3333" height="37.6667">
    <properties>
     <property name="Action" value="Restart Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="29" wrap="1" color="#ffffff">Restart</text>
+   <text fontfamily="Poor Richard" pixelsize="28" wrap="1" color="#ffffff">Restart</text>
   </object>
  </objectgroup>
 </map>

@@ -11,7 +11,7 @@
  </objectgroup>
  <objectgroup id="5" name="Text">
   <object id="4" x="239.833" y="50.5" width="280.333" height="40.3333">
-   <text fontfamily="MS Shell Dlg 2" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 2 (medium)</text>
+   <text fontfamily="Poor Richard" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Level 2 (medium)</text>
   </object>
  </objectgroup>
  <objectgroup id="6" name="Buttons">
@@ -19,19 +19,19 @@
    <properties>
     <property name="Action" value="Run Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
+   <text fontfamily="Poor Richard" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Play</text>
   </object>
   <object id="6" type="Button" x="337.167" y="338.5" width="121.667" height="47">
    <properties>
     <property name="Action" value="Restart Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
+   <text fontfamily="Poor Richard" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Restart</text>
   </object>
   <object id="8" type="Button" x="225.167" y="337.167" width="87" height="47">
    <properties>
     <property name="Action" value="Edit Level"/>
    </properties>
-   <text fontfamily="MS Shell Dlg 2" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
+   <text fontfamily="Poor Richard" pixelsize="35" wrap="1" color="#ffffff" halign="center" valign="center">Edit</text>
   </object>
  </objectgroup>
  <objectgroup id="7" name="RedZone">
