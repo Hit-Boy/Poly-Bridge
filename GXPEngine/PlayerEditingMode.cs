@@ -20,6 +20,7 @@ public class PlayerEditingMode : GameObject
 
     bool pressedLastFrame = false;
     bool pointCreated = false;
+    bool onFixedPoint = false;
 
     public bool isEditing = true;
 
@@ -67,7 +68,7 @@ public class PlayerEditingMode : GameObject
                         if (deltaVec.Length() <= pointDistance)
                         {
                             pointOne = point.position;
-                            platformBody.AddPoint(new VerletPoint(pointOne.x, pointOne.y, false));
+                            platformBody.AddPoint(new VerletPoint(pointOne.x, pointOne.y, true));
                             boundary = new PlatformBoundary(pointOne);
                             AddChild(boundary);
                             pointCreated = true;
@@ -92,11 +93,33 @@ public class PlayerEditingMode : GameObject
                 pointTwo = pointOne + deltaVec;
             }
             else
-                pointTwo = mousePos;
+            {
+                foreach (LevelPlatformPoint point in existingPoints)
+                {
+                    deltaVec = mousePos - point.position;
+                    if (deltaVec.Length() <= pointDistance)
+                    {
+                        pointTwo = point.position;
+                        onFixedPoint = true;
+                        break;
+                    }
+                    else
+                    {
+                        pointTwo = mousePos;
+                    }
+                }
+            }
             
             if (redZone != null && redZone.HitTestPoint(pointTwo.x, pointTwo.y))
             {
                 platformBody.RemoveLastPoint();
+            }
+            else if(onFixedPoint)
+            {
+                platformBody.AddPoint(new VerletPoint(pointTwo.x, pointTwo.y, true));
+                platformBody.AddConstraint(platformBody.point.Count - 2, platformBody.point.Count - 1);
+                drawBody.DrawVerlet(platformBody);
+                onFixedPoint = false;
             }
             else
             {
@@ -107,7 +130,6 @@ public class PlayerEditingMode : GameObject
             RemoveChild(boundary);
             pointCreated = false;
         }
-
         pressedLastFrame = false;
     }
 
