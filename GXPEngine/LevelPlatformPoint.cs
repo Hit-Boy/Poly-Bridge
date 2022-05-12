@@ -7,7 +7,6 @@ using TiledMapParser;
 public class LevelPlatformPoint : Sprite
 {
     public Vec2 position;
-    VerletBody body;
     public LevelPlatformPoint(TiledObject obj = null) : base("circle.png")
     {
         position = new Vec2(obj.X, obj.Y);
