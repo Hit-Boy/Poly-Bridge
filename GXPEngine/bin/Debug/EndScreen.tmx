@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="5" nextobjectid="3">
+ <imagelayer id="2" name="Background">
+  <image source="menuBackground.png" width="1920" height="1080"/>
+ </imagelayer>
+ <objectgroup id="3" name="Text">
+  <object id="1" x="120.833" y="76.5" width="548" height="91">
+   <text fontfamily="Poor Richard" pixelsize="37" wrap="1" color="#ffffff" halign="center" valign="center">Congratulations, you beat the game!</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Buttons">
+  <object id="2" type="Button" x="319.5" y="320.5" width="219" height="53">
+   <properties>
+    <property name="Action" value="Back"/>
+   </properties>
+   <text fontfamily="MS Shell Dlg 2" pixelsize="32" wrap="1" color="#ffffff" halign="center" valign="center">Back to Menu</text>
+  </object>
+ </objectgroup>
+</map>

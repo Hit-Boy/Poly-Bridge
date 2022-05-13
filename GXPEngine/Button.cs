@@ -25,7 +25,14 @@ class Button : GameObject
 
         if (action == "Next Level")
         {
-            ((MyGame)game).LoadLevel("Level" + (((MyGame)game).levelTracker + 1) + ".tmx");
+            if (level.currentLevelName == "Level4.tmx")
+            {
+                ((MyGame)game).LoadLevel("EndScreen.tmx", true);
+                ((MyGame)game).levelTracker = 0;
+            }
+            else {
+                ((MyGame)game).LoadLevel("Level" + (((MyGame)game).levelTracker + 1) + ".tmx");
+            }
         }else if(action == "Run Level")
         {
             level.GameStatePlay();
