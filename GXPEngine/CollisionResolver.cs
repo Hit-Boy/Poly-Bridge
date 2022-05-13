@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using GXPEngine;
 using GXPEngine.Core;
@@ -6,12 +7,14 @@ using GXPEngine.Core;
 public class CollisionResolver {
     private VerletBody verletBody;
     private Mover mover;
+    private List<Obstacle> obstacles;
     public bool collisionThisFrame;
     private float Cr = 0.95f; // coefficent of restitution
-    private float angularMult = 0.8f;
+    private float fixedMult = 15f;
     
-    public CollisionResolver(VerletBody verletBody, Mover mover) {
+    public CollisionResolver(VerletBody verletBody, Mover mover, List<Obstacle> obstacles) {
         this.verletBody = verletBody;
+        this.obstacles = obstacles;
         this.mover = mover;
     }
 
@@ -33,40 +36,101 @@ public class CollisionResolver {
         }
     }
 
-    public void CollisionCheck() {
+    public void VerletMoverCollisionCheck() {
         
         Vec2 moverToFirstPoint = new Vec2();
         Vec2 moverToSecondPoint = new Vec2();
         Vec2 moverNormalToPLatform;
+
         foreach (VerletConstraint constraint in verletBody.constraint) {
+
             moverToFirstPoint.SetXY(Mathf.Abs(mover.x - constraint.one.x), Mathf.Abs(mover.y - constraint.one.y));
             moverToSecondPoint.SetXY(Mathf.Abs(mover.x - constraint.two.x), Mathf.Abs(mover.y - constraint.two.y));
             moverNormalToPLatform = mover.position.VecNormalToLine(constraint.one.position, constraint.two.position);
-            
-            if (moverNormalToPLatform.Length() - mover.radius < float.Epsilon) {
-                Vec2 POI = mover.position.VecNormalToLine(constraint.one.position, constraint.two.position) + mover.position;
-                if(new Vec2(POI.x - constraint.one.x, POI.y - constraint.one.y).Length() + 
-                   new Vec2(POI.x - constraint.two.x, POI.y - constraint.two.y).Length() <= 
-                   new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y).Length()){
-                   
+            if (moverNormalToPLatform.Length() - mover.radius < float.Epsilon) { Vec2 POI = mover.position.VecNormalToLine(constraint.one.position, constraint.two.position) +
+                               mover.position;
+                if (new Vec2(POI.x - constraint.one.x, POI.y - constraint.one.y).Length() +
+                    new Vec2(POI.x - constraint.two.x, POI.y - constraint.two.y).Length() <=
+                    new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y).Length()) {
                     Vec2 offset = new Vec2();
                     if (mover.oldPosition.PointWhichSide(constraint.one.position, constraint.two.position) ==
                         mover.position.PointWhichSide(constraint.one.position, constraint.two.position)) {
                         offset = mover.radius * moverNormalToPLatform.Normalized() - moverNormalToPLatform;
 
                     }
-                    else {
-                        offset = -mover.radius * moverNormalToPLatform.Normalized();
+                    else { 
+                        offset = -mover.radius * moverNormalToPLatform.Normalized(); 
                     }
 
-                    PlatformAndCircleCollision(offset, mover, constraint);
+                    PlatformAndMoverCollision(offset, mover, constraint);
+                }
+            }
+                
+        }
+    }
+
+    public void ObstacleMoverCollisionCheck() {
+        for (int i = 0; i < obstacles.Count; i++) {
+            Vec2 MoverToObstacle = new Vec2(obstacles[i].position.x - mover.position.x, obstacles[i].position.y - mover.position.y);
+            if (obstacles[i].radius + mover.radius >= MoverToObstacle.Length()) {
+                mover.position -= (obstacles[i].radius + mover.radius) * MoverToObstacle.Normalized() - MoverToObstacle;
+                mover.velocity = mover.velocity.VecReflect(Vec2.Unit().VecNormalToLine(mover.position, obstacles[i].position), Cr);
+            }
+        }
+    }
+
+    public void VerletObstacleCollisionCheck() {
+        Vec2 obstacleToFirstPoint = new Vec2();
+        Vec2 obstacleToSecondPoint = new Vec2();
+        Vec2 obstacleNormalToPLatform;
+
+        foreach (VerletConstraint constraint in verletBody.constraint) {
+            for (int i = 0; i < obstacles.Count; i++) {
+                
+                obstacleToFirstPoint.SetXY(Mathf.Abs(obstacles[i].position.x - constraint.one.x),
+                    Mathf.Abs(obstacles[i].position.y - constraint.one.y));
+                obstacleToSecondPoint.SetXY(Mathf.Abs(obstacles[i].position.x - constraint.two.x),
+                    Mathf.Abs(obstacles[i].position.y - constraint.two.y));
+                obstacleNormalToPLatform =
+                    obstacles[i].position.VecNormalToLine(constraint.one.position, constraint.two.position);
+                
+                if (obstacleNormalToPLatform.Length() - obstacles[i].radius < float.Epsilon) {
+                    Vec2 POI = obstacles[i].position.VecNormalToLine(constraint.one.position, constraint.two.position) +
+                               obstacles[i].position;
+                    
+                    if (new Vec2(POI.x - constraint.one.x, POI.y - constraint.one.y).Length() +
+                        new Vec2(POI.x - constraint.two.x, POI.y - constraint.two.y).Length() <=
+                        new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y).Length()) {
+                        Vec2 offset = new Vec2();
+                        
+                        if (obstacles[i].position.PointWhichSide(constraint.one.position, constraint.two.position) ==
+                            obstacles[i].position.PointWhichSide(constraint.one.oldPosition, constraint.two.oldPosition)) {
+                            offset = obstacles[i].radius * obstacleNormalToPLatform.Normalized() - obstacleNormalToPLatform;
+                        }
+                        else {
+                            offset = obstacles[i].radius * obstacleNormalToPLatform.Normalized() + obstacleNormalToPLatform;
+                        }
+                        
+                        PlatformAndObstacleCollision( offset, constraint);
+                    }
                 }
             }
         }
     }
 
+    private void PlatformAndObstacleCollision(Vec2 offset, VerletConstraint constraint) {
+        constraint.one.position += offset;
+        constraint.two.position += offset;
+        
+        Vec2 vConstraintBefore = Vec2.FindCenter(constraint.one.position, constraint.two.position) -
+                                   Vec2.FindCenter(constraint.one.oldPosition, constraint.two.oldPosition);
 
-    private void PlatformAndCircleCollision(Vec2 offset, Mover mover, VerletConstraint constraint) {
+        //constraint.one.oldPosition -= vConstraintBefore.VecReflect(constraint.one.position - constraint.two.position, Cr);
+        //constraint.two.oldPosition -= vConstraintBefore.VecReflect(constraint.one.position - constraint.two.position, Cr);
+
+    }
+
+    private void PlatformAndMoverCollision(Vec2 offset, Mover mover, VerletConstraint constraint) {
         
         mover.position -= offset;
 
@@ -76,38 +140,41 @@ public class CollisionResolver {
             float vBallAfter;
             float vConstraintBefore = (Vec2.FindCenter(constraint.one.position, constraint.two.position) -
                                        Vec2.FindCenter(constraint.one.oldPosition, constraint.two.oldPosition)).Length();
-
             
-            vBallAfter = (Cr * constraint.mass * (vBallBefore - vConstraintBefore) + constraint.mass * vConstraintBefore +
-                         mover.mass * vBallBefore) / (constraint.mass + mover.mass);
+            vBallAfter = (Cr * constraint.mass * (vBallBefore - vConstraintBefore) +
+                          constraint.mass * vConstraintBefore +
+                          mover.mass * vBallBefore) / (constraint.mass + mover.mass);
+
             if(constraint.one._fixed && constraint.two._fixed)
                 mover.velocity = mover.velocity.VecReflect(new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y), 1) * Cr;
             else {
                 mover.velocity = mover.velocity.VecReflect(new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y), 1).Normalized()  * vBallAfter;
             }
-            
-            vConstraintAfter = (Cr * mover.mass * (vConstraintBefore - vBallBefore) + constraint.mass * vConstraintBefore +
+            Console.WriteLine(vConstraintBefore);
+            vConstraintAfter = (Cr * mover.mass * (vConstraintBefore - vBallBefore) +
+                                constraint.mass * vConstraintBefore +
                                 mover.mass * vBallBefore) / (constraint.mass + mover.mass);
-            
+            Console.WriteLine(vConstraintAfter);
+            Console.WriteLine("\n");
             if (!constraint.one._fixed && !constraint.two._fixed) {
                 constraint.one.oldPosition -= offset.Normalized() * vConstraintAfter;
                 constraint.two.oldPosition -= offset.Normalized() * vConstraintAfter;
             }
             else if(!constraint.one._fixed && constraint.two._fixed) {
-                constraint.one.oldPosition -= offset.Normalized() * vConstraintAfter;
+                constraint.one.oldPosition -= offset.Normalized() * vConstraintAfter / fixedMult;
             }
             else if(constraint.one._fixed && !constraint.two._fixed) {
-                constraint.two.oldPosition -= offset.Normalized() * vConstraintAfter;
+                constraint.two.oldPosition -= offset.Normalized() * vConstraintAfter / fixedMult;
             }
             
             Vec2 POIOnTheLine = mover.position + mover.radius * offset.Normalized();
-            GiveAngularVelocity(constraint, POIOnTheLine, offset, vConstraintAfter);
+            GiveAngularVelocity(constraint, POIOnTheLine, offset, vConstraintAfter, 2);
                 
             collisionThisFrame = true;
         }
     }
 
-    private void GiveAngularVelocity(VerletConstraint constraint, Vec2 POI, Vec2 offset, float speedAfter) {
+    private void GiveAngularVelocity(VerletConstraint constraint, Vec2 POI, Vec2 offset, float speedAfter, float angularMult) {
         float lengthToPointOne = new Vec2(POI.x - constraint.one.x, POI.y - constraint.one.y).Length();
         float lengthToPointTwo = new Vec2(POI.x - constraint.two.x, POI.y - constraint.two.y).Length();
 
@@ -125,12 +192,7 @@ public class CollisionResolver {
                     offset.Normalized() * lengthToPointOne / (lengthToPointOne + lengthToPointTwo) * speedAfter * angularMult;
             } 
         }
-        else if(!constraint.one._fixed && constraint.two._fixed) {
-            constraint.one.oldPosition += offset.Normalized() * speedAfter * angularMult;
-        }
-        else if(constraint.one._fixed && !constraint.two._fixed) {
-            constraint.two.oldPosition += offset.Normalized() * speedAfter * angularMult;
-        }
+        
 
     }
 }

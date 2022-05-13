@@ -36,6 +36,23 @@ namespace GXPEngine.Core
 			SetBitmap (bitmap);
 		}
 
+		public Texture2D(string filename, float widthMultiplier, float heightMultiplier) {
+			LoadChanged(filename, widthMultiplier, heightMultiplier);
+		}
+		private void LoadChanged(string filename, float widthMultiplier, float heightMultiplier) {
+			_filename = filename;
+			Bitmap original;
+			Bitmap resized;
+			try {
+				original = new Bitmap(filename);
+				resized = new Bitmap(original,
+					new Size(Mathf.Ceiling(original.Width * widthMultiplier), Mathf.Ceiling(original.Height * heightMultiplier)));
+			} catch {
+				throw new Exception("Image " + filename + " cannot be found.");
+			}
+			SetBitmap(resized);
+		}
+		
 		//------------------------------------------------------------------------------------------------------------------------
 		//														GetInstance()
 		//------------------------------------------------------------------------------------------------------------------------

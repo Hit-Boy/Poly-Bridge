@@ -15,6 +15,7 @@ public class Level : GameObject
     Draw canvas;
     Mover mover;
     CollisionResolver collisionResolver;
+    List<Obstacle> obstacles;
 
     private StartPoint startPoint;
     private Vec2 startPointPosition;
@@ -38,6 +39,7 @@ public class Level : GameObject
         playerEditingMode.SetParent();
         CreateLevel();
 
+        obstacles = new List<Obstacle>();
         startPoint = game.FindObjectOfType<StartPoint>();
         
         if(currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt" 
@@ -46,7 +48,7 @@ public class Level : GameObject
                 mover = new Mover(startPoint.position.x, startPoint.position.y);
         
         if(mover != null)
-            collisionResolver = new CollisionResolver(body, mover);
+            collisionResolver = new CollisionResolver(body, mover, obstacles);
     }
     
 
@@ -109,8 +111,7 @@ public class Level : GameObject
 
                 for (int i = 0; i < iterationCount; i++) {
                     body.UpdateConstraints();
-                    collisionResolver.VerletBoundaries();
-                    collisionResolver.CollisionCheck();
+                    CheckAllCollisions();
                 }
 
                 DrawAll();
@@ -121,4 +122,12 @@ public class Level : GameObject
         if (Input.GetKeyUp(Key.SPACE) && !playerEditingMode.isEditing)
             LevelWonScreen();
     }
+    
+    private void CheckAllCollisions() {
+        collisionResolver.VerletObstacleCollisionCheck();
+        collisionResolver.ObstacleMoverCollisionCheck();
+        collisionResolver.VerletMoverCollisionCheck();
+        collisionResolver.VerletBoundaries();
+    }
+    
 }
