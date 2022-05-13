@@ -9,12 +9,13 @@ public class Level : GameObject
 {
     Sound winMusic = new Sound("LevelPassed.mp3");
     TiledLoader loader;
-    PlayerEditingMode playerEditingMode;
+    public PlayerEditingMode playerEditingMode;
 
     VerletBody body;
     Draw canvas;
     Mover mover;
     CollisionResolver collisionResolver;
+
     private StartPoint startPoint;
     private Vec2 startPointPosition;
 
@@ -33,10 +34,10 @@ public class Level : GameObject
         
         canvas = new Draw(800, 600);
         AddChild(canvas);
-
         AddChild(playerEditingMode);
         playerEditingMode.SetParent();
         CreateLevel();
+
         startPoint = game.FindObjectOfType<StartPoint>();
         
         if(currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt" 
@@ -60,6 +61,7 @@ public class Level : GameObject
         loader.addColliders = false;
         loader.LoadImageLayers();
 
+        loader.LoadTileLayers();
         loader.autoInstance = true;
         loader.addColliders = true;
         loader.LoadObjectGroups();

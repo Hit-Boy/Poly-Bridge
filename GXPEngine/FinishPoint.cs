@@ -7,7 +7,7 @@ using TiledMapParser;
 public class FinishPoint : Sprite
 {
     Vec2 position;
-    public FinishPoint(TiledObject obj = null):base("checkers.png")
+    public FinishPoint(TiledObject obj = null):base("finishPoint.png")
     {
         position = new Vec2(obj.X, obj.Y);
     }

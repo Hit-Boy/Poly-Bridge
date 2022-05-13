@@ -10,7 +10,7 @@ public class LevelPlatformPoint : Sprite
     public LevelPlatformPoint(TiledObject obj = null) : base("circle.png")
     {
         position = new Vec2(obj.X, obj.Y);
-        
+        alpha = 0f;
     }
 
     public LevelPlatformPoint(string imageFile, TiledObject obj = null) : base(imageFile)

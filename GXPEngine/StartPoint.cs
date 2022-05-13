@@ -8,7 +8,7 @@ using TiledMapParser;
 public class StartPoint : Sprite
 {
     public Vec2 position;
-    public StartPoint(TiledObject obj=null) : base("colors.png")
+    public StartPoint(TiledObject obj=null) : base("startPoint.png")
     {
         position = new Vec2(obj.X, obj.Y);
     }

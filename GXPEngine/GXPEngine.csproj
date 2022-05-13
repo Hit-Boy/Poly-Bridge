@@ -41,8 +41,7 @@
     <Compile Include="Draw.cs" />
     <Compile Include="FinishPoint.cs" />
     <Compile Include="Level.cs" />
-    <Compile Include="LevelEditor.cs" />
-    <Compile Include="FileIO.cs" />
+    <Compile Include="MouseFollower.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />
     <Compile Include="GXPEngine\AddOns\TiledLoader.cs" />

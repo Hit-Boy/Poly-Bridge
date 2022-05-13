@@ -6,11 +6,14 @@ using System.Collections.Generic;
 public class MyGame : Game
 {
 	Sound backgroundMusic = new Sound("backgroundMusic.mp3", true, true);
+	MouseFollower mouseFollower;
 	public int levelTracker = -1;
 	public MyGame() : base(800, 600, false)	// Final: 1920, 1080, true
 	{
+		mouseFollower = new MouseFollower();
 		backgroundMusic.Play();
 		LoadLevel("MainMenu.tmx");
+		AddChild(mouseFollower);
 	}
 
 	void DestroyAll()
@@ -18,7 +21,8 @@ public class MyGame : Game
 		List<GameObject> children = GetChildren();
 		foreach (GameObject child in children)
 		{
-			child.Destroy();
+			if(!(child is MouseFollower))
+				child.Destroy();
 		}
 	}
 
@@ -37,7 +41,7 @@ public class MyGame : Game
 
 	void Update()
 	{
-
+		SetChildIndex(mouseFollower, 1);
 	}
 
 	static void Main()
