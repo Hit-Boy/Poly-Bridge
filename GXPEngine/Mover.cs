@@ -1,6 +1,6 @@
 using GXPEngine;
 
-public class Mover{
+public class Mover {
 
     public float x {
         get {
@@ -33,8 +33,13 @@ public class Mover{
         acceleration = new Vec2();
     }
 
-    public Mover(float px, float py) : this(new Vec2(px, py)) {}
-
+    public Mover(float px, float py)
+    {
+        position.x = px;
+        position.y = py;
+        velocity = new Vec2();
+        acceleration = new Vec2();
+    }
     public void MoveMover() {
         velocity += acceleration;
         position += velocity;

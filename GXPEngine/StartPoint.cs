@@ -11,6 +11,7 @@ public class StartPoint : Sprite
     public StartPoint(TiledObject obj=null) : base("startPoint.png")
     {
         position = new Vec2(obj.X, obj.Y);
+        alpha = 0;
     }
 
     public StartPoint(string imageFile, TiledObject obj = null) : base(imageFile)

@@ -11,7 +11,7 @@ public class PlayerEditingMode : GameObject
     RedZone redZone;
 
     VerletBody platformBody = new VerletBody();
-    VerletDraw drawBody = new VerletDraw(800, 600);
+    VerletDraw drawBody = new VerletDraw(1920, 1080);
 
     int pointOneIndex;
     int pointTwoIndex;
@@ -145,6 +145,11 @@ public class PlayerEditingMode : GameObject
         level = (Level)this.parent;
     }
 
+
+    public void ClearCanvas() 
+    {
+        drawBody.parent = null;
+    }
     void Update()
     {
         CreateObject();

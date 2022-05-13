@@ -8,7 +8,7 @@ public class MyGame : Game
 	Sound backgroundMusic = new Sound("backgroundMusic.mp3", true, true);
 	MouseFollower mouseFollower;
 	public int levelTracker = -1;
-	public MyGame() : base(800, 600, false)	// Final: 1920, 1080, true
+	public MyGame() : base(1920, 1080, false)	// Final: 1920, 1080, true
 	{
 		mouseFollower = new MouseFollower();
 		backgroundMusic.Play();

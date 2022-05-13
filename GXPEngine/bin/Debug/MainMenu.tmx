@@ -4,17 +4,17 @@
   <image source="menuBackground.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="Buttons">
-  <object id="1" type="Button" x="274.5" y="139.833" width="189.667" height="66.6667">
+  <object id="1" type="Button" x="770.5" y="273.833" width="267.667" height="98.6667">
    <properties>
     <property name="Action" value="Next Level"/>
    </properties>
-   <text fontfamily="Poor Richard" pixelsize="63" wrap="1" color="#ffffff" halign="center" valign="center">Start</text>
+   <text fontfamily="Poor Richard" pixelsize="120" wrap="1" color="#ffffff" halign="center" valign="center">Start</text>
   </object>
-  <object id="2" type="Button" x="250.5" y="291.833" width="240.333" height="66.6667">
+  <object id="2" type="Button" x="706.5" y="455.833" width="406.333" height="124.667">
    <properties>
     <property name="Action" value="Credits"/>
    </properties>
-   <text fontfamily="Poor Richard" pixelsize="63" wrap="1" color="#ffffff" halign="center" valign="center">Credits</text>
+   <text fontfamily="Poor Richard" pixelsize="120" wrap="1" color="#ffffff" halign="center" valign="center">Credits</text>
   </object>
  </objectgroup>
 </map>

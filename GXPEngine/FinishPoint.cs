@@ -10,6 +10,7 @@ public class FinishPoint : Sprite
     public FinishPoint(TiledObject obj = null):base("finishPoint.png")
     {
         position = new Vec2(obj.X, obj.Y);
+        alpha = 0;
     }
 
     public FinishPoint(string imageFile, TiledObject obj = null) : base(imageFile)

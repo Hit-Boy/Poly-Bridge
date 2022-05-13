@@ -17,7 +17,7 @@ public class CollisionResolver {
         this.obstacles = obstacles;
         this.mover = mover;
     }
-
+    /*
     public void VerletBoundaries() {
         foreach (VerletPoint p in verletBody.point) {
             if (p.position.y > 550) {
@@ -35,7 +35,7 @@ public class CollisionResolver {
             }
         }
     }
-
+    */
     public void VerletMoverCollisionCheck() {
         
         Vec2 moverToFirstPoint = new Vec2();
@@ -195,4 +195,14 @@ public class CollisionResolver {
         
 
     }
+
+    public bool CheckFinish() {
+        bool finish = false;
+        if (mover.position.x > 1670)
+            finish = true;
+        return finish;
+    }
+    
+
+
 }

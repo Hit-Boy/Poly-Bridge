@@ -11,7 +11,7 @@ class PlatformBoundary : Sprite
     {
         SetXY(position.x, position.y);
         SetOrigin(width / 2, height / 2);
-        SetScaleXY(0.4f, 0.4f);
+        SetScaleXY(1f, 1f);
         radius = width / 2;
     }
 

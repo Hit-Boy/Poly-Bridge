@@ -17,6 +17,8 @@ public class Level : GameObject
     CollisionResolver collisionResolver;
     List<Obstacle> obstacles;
 
+    bool won = false;
+
     private StartPoint startPoint;
     private Vec2 startPointPosition;
 
@@ -33,20 +35,23 @@ public class Level : GameObject
         body = new VerletBody();
         playerEditingMode = new PlayerEditingMode(body);
         
-        canvas = new Draw(800, 600);
+        canvas = new Draw(1920, 1080);
         AddChild(canvas);
         AddChild(playerEditingMode);
         playerEditingMode.SetParent();
         CreateLevel();
 
-        obstacles = new List<Obstacle>();
+        obstacles = game.FindObjectsOfType<Obstacle>().ToList();
         startPoint = game.FindObjectOfType<StartPoint>();
-        
-        if(currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt" 
+
+        if (currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt"
            || currentLevelName != "EndGame.txt")
-            if(startPoint != null)
+            if (startPoint != null)
+            {
+                Console.WriteLine(startPoint.position.x);
                 mover = new Mover(startPoint.position.x, startPoint.position.y);
-        
+            }
+
         if(mover != null)
             collisionResolver = new CollisionResolver(body, mover, obstacles);
     }
@@ -63,23 +68,25 @@ public class Level : GameObject
         loader.addColliders = false;
         loader.LoadImageLayers();
 
-        loader.LoadTileLayers();
         loader.autoInstance = true;
         loader.addColliders = true;
+
         loader.LoadObjectGroups();
 
     }
 
     void LevelWonScreen()
     {
-        ((MyGame)game).LoadWinScreen();
-        winMusic.Play();
+            ((MyGame)game).LoadWinScreen();
+            winMusic.Play();
+            won = true;
     }
 
     public void GameStatePlay()
     {
         // Game is in Play Mode
         playerEditingMode.isEditing = false;
+        playerEditingMode.ClearCanvas();
     }
 
     public void GameStateEdit()
@@ -114,6 +121,9 @@ public class Level : GameObject
                     CheckAllCollisions();
                 }
 
+                if (collisionResolver.CheckFinish())
+                    if(!won)
+                        LevelWonScreen();
                 DrawAll();
             }
             
@@ -127,7 +137,6 @@ public class Level : GameObject
         collisionResolver.VerletObstacleCollisionCheck();
         collisionResolver.ObstacleMoverCollisionCheck();
         collisionResolver.VerletMoverCollisionCheck();
-        collisionResolver.VerletBoundaries();
     }
     
 }
