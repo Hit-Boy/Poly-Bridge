@@ -35,7 +35,6 @@ namespace GXPEngine.Core
 		public Texture2D (Bitmap bitmap) {
 			SetBitmap (bitmap);
 		}
-
 		public Texture2D(string filename, float widthMultiplier, float heightMultiplier) {
 			LoadChanged(filename, widthMultiplier, heightMultiplier);
 		}
@@ -51,6 +50,17 @@ namespace GXPEngine.Core
 				throw new Exception("Image " + filename + " cannot be found.");
 			}
 			SetBitmap(resized);
+		}
+		
+		public static Texture2D GetChangedInstance(string filename, float widthMultiplier, float heightMultiplier, bool keepInCache=false) {
+			Texture2D tex2d = LoadCache[filename] as Texture2D;
+			if (tex2d == null) {
+				tex2d = new Texture2D(filename, widthMultiplier, heightMultiplier);
+				LoadCache[filename] = tex2d;
+			}
+			tex2d.stayInCache |= keepInCache; // setting it once to true keeps it in cache
+			tex2d.count ++;
+			return tex2d;
 		}
 		
 		//------------------------------------------------------------------------------------------------------------------------
