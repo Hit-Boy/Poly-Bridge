@@ -197,9 +197,7 @@ public class CollisionResolver {
     }
 
     public bool CheckFinish() {
-        bool finish = false;
-        if (mover.position.x > 1670)
-            finish = true;
+        bool finish = mover.position.x > 1670 && mover.position.y < 1080;
         return finish;
     }
     

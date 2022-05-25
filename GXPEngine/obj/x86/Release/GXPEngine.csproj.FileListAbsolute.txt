@@ -1,0 +1,4 @@
+C:\MyProjects\GXP\Poly-Bridge\Poly-Bridge\GXPEngine\bin\Release\GXPEngine.exe
+C:\MyProjects\GXP\Poly-Bridge\Poly-Bridge\GXPEngine\obj\x86\Release\GXPEngine.csproj.AssemblyReference.cache
+C:\MyProjects\GXP\Poly-Bridge\Poly-Bridge\GXPEngine\obj\x86\Release\GXPEngine.csproj.CoreCompileInputs.cache
+C:\MyProjects\GXP\Poly-Bridge\Poly-Bridge\GXPEngine\obj\x86\Release\GXPEngine.exe

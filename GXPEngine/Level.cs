@@ -72,7 +72,6 @@ public class Level : GameObject
         loader.addColliders = true;
 
         loader.LoadObjectGroups();
-
     }
 
     void LevelWonScreen()
@@ -109,7 +108,7 @@ public class Level : GameObject
         
         if (!playerEditingMode.isEditing) {
             collisionResolver.collisionThisFrame = false;
-            int iterationCount = 64;
+            int iterationCount = 20;
             if (gravity) {
                 body.AddAcceleration(new Vec2(0, 0.2f));
                 mover.AddAcceleration(new Vec2(0, 0.2f));
