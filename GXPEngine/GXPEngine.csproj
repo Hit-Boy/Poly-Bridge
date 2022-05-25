@@ -40,6 +40,7 @@
     <Compile Include="CollisionResolver.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="FinishPoint.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="MouseFollower.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />

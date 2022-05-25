@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using GXPEngine;
 using TiledMapParser;
+using System.Drawing;
 
 public class Level : GameObject
 {
     Sound winMusic = new Sound("LevelPassed.mp3");
+    HUD hud = new HUD();
     TiledLoader loader;
     public PlayerEditingMode playerEditingMode;
 
@@ -44,13 +46,16 @@ public class Level : GameObject
         obstacles = game.FindObjectsOfType<Obstacle>().ToList();
         startPoint = game.FindObjectOfType<StartPoint>();
 
-        if (currentLevelName != "MainMenu.txt" || currentLevelName != "Credits.txt" || currentLevelName != "WinScreen.txt"
-           || currentLevelName != "EndGame.txt")
+        if (currentLevelName != "MainMenu.tmx" && currentLevelName != "Credits.tmx" && currentLevelName != "WinScreen.tmx"
+           && currentLevelName != "EndGame.tmx")
+        {
+            AddChild(hud);
+            hud.SetParent();
             if (startPoint != null)
             {
-                Console.WriteLine(startPoint.position.x);
                 mover = new Mover(startPoint.position.x, startPoint.position.y);
             }
+        }
 
         if(mover != null)
             collisionResolver = new CollisionResolver(body, mover, obstacles);
@@ -76,9 +81,9 @@ public class Level : GameObject
 
     void LevelWonScreen()
     {
-            ((MyGame)game).LoadWinScreen();
-            winMusic.Play();
-            won = true;
+        ((MyGame)game).LoadWinScreen();
+        winMusic.Play();
+        won = true;
     }
 
     public void GameStatePlay()

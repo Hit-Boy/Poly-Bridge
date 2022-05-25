@@ -27,6 +27,9 @@ public class PlayerEditingMode : GameObject
 
     public bool isEditing = true;
 
+
+    public int platformCount = 10;
+
     List<LevelPlatformPoint> existingPoints = new List<LevelPlatformPoint>();
     List<Platform> platforms = new List<Platform>();
     public PlayerEditingMode(VerletBody platformBody) {
@@ -56,69 +59,74 @@ public class PlayerEditingMode : GameObject
         mousePos = new Vec2(Input.mouseX, Input.mouseY);
         FindRedzone();
 
-        if (Input.GetMouseButtonDown(0) && isEditing)
+        if (platformCount > 0)
         {
-            if (pressedLastFrame == false)
+            if (Input.GetMouseButtonDown(0) && isEditing)
             {
-                for(int i = 0; i < platformBody.point.Count; i++) {
-                    deltaVec = mousePos - platformBody.point[i].position;
-                    if (deltaVec.Length() <= pointDistance)
+                if (pressedLastFrame == false)
+                {
+                    for (int i = 0; i < platformBody.point.Count; i++)
                     {
-                        pointOneIndex = i;
-                        pointOnePos = platformBody.point[i].position;
-                        boundary = new PlatformBoundary(platformBody.point[i].position);
-                        AddChild(boundary);
-                        pointCreated = true;
+                        deltaVec = mousePos - platformBody.point[i].position;
+                        if (deltaVec.Length() <= pointDistance)
+                        {
+                            pointOneIndex = i;
+                            pointOnePos = platformBody.point[i].position;
+                            boundary = new PlatformBoundary(platformBody.point[i].position);
+                            AddChild(boundary);
+                            pointCreated = true;
+                            break;
+                        }
+                    }
+                }
+                pressedLastFrame = true;
+            }
+
+            if (Input.GetMouseButtonUp(0) && isEditing && pointCreated)
+            {
+                pointDistance = 30;
+                deltaVec = mousePos - pointOnePos;
+
+                // Check if mouse is past the boundary
+                if (deltaVec.Length() > boundary.radius)
+                {
+                    float distance = deltaVec.Length();
+                    deltaVec = mousePos - pointOnePos;
+                    deltaVec *= boundary.radius / distance;
+                    pointTwoPos = pointOnePos + deltaVec;
+                }
+                else
+                {
+                    pointTwoPos = mousePos;
+                }
+
+                for (int j = 0; j < platformBody.point.Count; j++)
+                {
+                    deltaVec = pointTwoPos - platformBody.point[j].position;
+                    if (deltaVec.Length() < pointDistance)
+                    {
+                        pointTwoIndex = j;
+                        pointFound = true;
                         break;
                     }
                 }
-            }
-            pressedLastFrame = true;
-        }
 
-        if (Input.GetMouseButtonUp(0) && isEditing && pointCreated)
-        {
-            pointDistance = 30;
-            deltaVec = mousePos - pointOnePos;
-
-            // Check if mouse is past the boundary
-            if (deltaVec.Length() > boundary.radius)
-            {
-                float distance = deltaVec.Length();
-                deltaVec = mousePos - pointOnePos;
-                deltaVec *= boundary.radius / distance;
-                pointTwoPos = pointOnePos + deltaVec;
-            }
-            else
-            {
-                pointTwoPos = mousePos;
-            }
-
-            for (int j = 0; j < platformBody.point.Count; j++)
-            {
-                deltaVec = pointTwoPos - platformBody.point[j].position;
-                if (deltaVec.Length() < pointDistance)
+                if (!pointFound)
                 {
-                    pointTwoIndex = j;
-                    pointFound = true;
-                    break;
+                    platformBody.point.Add(new VerletPoint(pointTwoPos.x, pointTwoPos.y, false));
+                    pointTwoIndex = platformBody.point.Count - 1;
                 }
+                pointFound = false;
+                if (redZone == null || redZone != null && !redZone.HitTestPoint(pointTwoPos.x, pointTwoPos.y))
+                {
+                    platformBody.AddConstraint(pointOneIndex, pointTwoIndex);
+                    platformCount--;
+                }
+                drawBody.DrawVerlet(platformBody);
+                RemoveChild(boundary);
             }
-
-            if (!pointFound)
-            {
-                platformBody.point.Add(new VerletPoint(pointTwoPos.x, pointTwoPos.y, false));
-                pointTwoIndex = platformBody.point.Count - 1;
-            }
-            pointFound = false;
-            if (redZone == null || redZone != null && !redZone.HitTestPoint(pointTwoPos.x, pointTwoPos.y))
-            {
-                platformBody.AddConstraint(pointOneIndex, pointTwoIndex);
-            }
-            drawBody.DrawVerlet(platformBody);
-            RemoveChild(boundary);
+            pressedLastFrame = false;
         }
-        pressedLastFrame = false;
     }
 
     void DeleteObject()
