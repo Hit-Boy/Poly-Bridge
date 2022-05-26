@@ -39,13 +39,13 @@ namespace GXPEngine
 			initializeFromTexture(new Texture2D(bitmap));
 		}
 
-		public Sprite (string filename, float widthMutiplier, float heightMultiplier, bool keepInCache=false, bool addCollider=true) : base(addCollider)
+		public Sprite (string filename, float widthMutiplier, float heightMultiplier, bool addCollider=true) : base(addCollider)
 		{
 			if (Game.main == null) {
 				throw new Exception ("Sprites cannot be created before creating a Game instance.");
 			}
 			name = filename;
-			initializeFromTexture(Texture2D.GetChangedInstance(filename, widthMutiplier, heightMultiplier, keepInCache));
+			initializeFromTexture(Texture2D.GetChangedInstance(filename, widthMutiplier, heightMultiplier));
 		}
 		public Sprite(Texture2D texture, bool addCollider = true) : base(addCollider) {
 			if (Game.main == null) {

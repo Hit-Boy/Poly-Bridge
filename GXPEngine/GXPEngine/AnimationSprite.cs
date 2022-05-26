@@ -54,12 +54,7 @@ namespace GXPEngine
 			name = filename;
 			initializeAnimFrames(cols, rows, frames);
 		}
-		public AnimationSprite (string filename, float widthMultiplier, float heightMultiplier, int cols, int rows, int frames=-1, bool keepInCache=false, bool addCollider=true) : base(filename,widthMultiplier, heightMultiplier,keepInCache,addCollider)
-		{
-			name = filename;
-			initializeAnimFrames(cols, rows, frames);
-		}
-		
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="GXPEngine.AnimSprite"/> class.
 		/// </summary>

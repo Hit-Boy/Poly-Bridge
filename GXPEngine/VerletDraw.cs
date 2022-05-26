@@ -6,10 +6,12 @@ class VerletDraw : EasyDraw {
 	}
 
 	public void DrawVerlet(VerletBody body) {
+		/*
 		Stroke (255, 0, 0);
 		foreach (VerletConstraint c in body.constraint) {
 			Line (c.one.position.x, c.one.position.y, c.two.position.x, c.two.position.y);
 		}
+		*/
 		Stroke(0,255,0);
 		Fill (0, 255, 0);
 		foreach (VerletPoint p in body.point) {
