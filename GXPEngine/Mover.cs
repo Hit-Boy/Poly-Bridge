@@ -1,6 +1,6 @@
 using GXPEngine;
 
-public class Mover {
+public class Mover : Sprite{
 
     public float x {
         get {
@@ -24,19 +24,23 @@ public class Mover {
     public Vec2 position;
     public Vec2 acceleration;
     public Vec2 oldPosition;
-    public float radius = 20f;
+    public float radius; //20
     public float mass = 1f;
 
-    public Mover(Vec2 newPosition) {
+    public Mover(Vec2 newPosition, float radius) : base("ball.png", 2*radius/180, 2*radius/180, false) {
+        this.radius = radius;
         position = newPosition;
         velocity = new Vec2();
         acceleration = new Vec2();
     }
 
-    public Mover(float px, float py)
+    public Mover(float px, float py, float radius): base("ball.png", 2*radius/180, 2*radius/180, false)
     {
+        this.radius = radius;
         position.x = px;
         position.y = py;
+        SetOrigin(width/2, height/2);
+        UpdateMoverSprite();
         velocity = new Vec2();
         acceleration = new Vec2();
     }
@@ -52,7 +56,9 @@ public class Mover {
     public void AddAcceleration(Vec2 pacceleration) {
         acceleration += pacceleration;
     }
-    
-    
+
+    public void UpdateMoverSprite() {
+        SetXY(position.x, position.y);
+    }
 
 }

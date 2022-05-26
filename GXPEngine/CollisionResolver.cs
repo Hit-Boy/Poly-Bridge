@@ -38,28 +38,27 @@ public class CollisionResolver {
     */
     public void VerletMoverCollisionCheck() {
         
-        Vec2 moverToFirstPoint = new Vec2();
-        Vec2 moverToSecondPoint = new Vec2();
         Vec2 moverNormalToPLatform;
 
         foreach (VerletConstraint constraint in verletBody.constraint) {
-
-            moverToFirstPoint.SetXY(Mathf.Abs(mover.x - constraint.one.x), Mathf.Abs(mover.y - constraint.one.y));
-            moverToSecondPoint.SetXY(Mathf.Abs(mover.x - constraint.two.x), Mathf.Abs(mover.y - constraint.two.y));
+            float ConstraintWidth = constraint.height / 2;
             moverNormalToPLatform = mover.position.VecNormalToLine(constraint.one.position, constraint.two.position);
-            if (moverNormalToPLatform.Length() - mover.radius < float.Epsilon) { Vec2 POI = mover.position.VecNormalToLine(constraint.one.position, constraint.two.position) +
+            Vec2 onePosition = constraint.one.position - ConstraintWidth * moverNormalToPLatform.Normalized();
+            Vec2 twoPosition = constraint.two.position - ConstraintWidth * moverNormalToPLatform.Normalized();
+            
+            if (moverNormalToPLatform.Length() - ConstraintWidth - mover.radius < float.Epsilon) { 
+                Vec2 POI = mover.position.VecNormalToLine(onePosition, twoPosition) +
                                mover.position;
-                if (new Vec2(POI.x - constraint.one.x, POI.y - constraint.one.y).Length() +
-                    new Vec2(POI.x - constraint.two.x, POI.y - constraint.two.y).Length() <=
-                    new Vec2(constraint.one.x - constraint.two.x, constraint.one.y - constraint.two.y).Length()) {
+                if (new Vec2(POI.x - onePosition.x, POI.y - onePosition.y).Length() +
+                    new Vec2(POI.x - twoPosition.x, POI.y - twoPosition.y).Length() <=
+                    new Vec2(onePosition.x - twoPosition.x, onePosition.y - twoPosition.y).Length()) {
                     Vec2 offset = new Vec2();
-                    if (mover.oldPosition.PointWhichSide(constraint.one.position, constraint.two.position) ==
-                        mover.position.PointWhichSide(constraint.one.position, constraint.two.position)) {
-                        offset = mover.radius * moverNormalToPLatform.Normalized() - moverNormalToPLatform;
-
+                    if (mover.oldPosition.PointWhichSide(onePosition, twoPosition) ==
+                        mover.position.PointWhichSide(onePosition, twoPosition)) {
+                        offset = (mover.radius + ConstraintWidth) * moverNormalToPLatform.Normalized() - moverNormalToPLatform;
                     }
                     else { 
-                        offset = -mover.radius * moverNormalToPLatform.Normalized(); 
+                        offset = -(mover.radius + ConstraintWidth) * moverNormalToPLatform.Normalized(); 
                     }
 
                     PlatformAndMoverCollision(offset, mover, constraint);

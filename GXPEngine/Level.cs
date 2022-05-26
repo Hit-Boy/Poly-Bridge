@@ -35,6 +35,7 @@ public class Level : GameObject
         loader.OnObjectCreated += OnSpriteCreated; //Subscription to this method allows for initializaiton of buttons
         
         body = new VerletBody();
+        AddChild(body);
         playerEditingMode = new PlayerEditingMode(body);
         
         canvas = new Draw(1920, 1080);
@@ -53,7 +54,8 @@ public class Level : GameObject
             hud.SetParent();
             if (startPoint != null)
             {
-                mover = new Mover(startPoint.position.x, startPoint.position.y);
+                mover = new Mover(startPoint.position.x, startPoint.position.y, 20);
+                AddChild(mover);
             }
         }
 
@@ -128,7 +130,8 @@ public class Level : GameObject
                 if (collisionResolver.CheckFinish())
                     if(!won)
                         LevelWonScreen();
-                DrawAll();
+                UpdateAllSprites();
+                //DrawAll();
             }
             
         }
@@ -142,5 +145,12 @@ public class Level : GameObject
         collisionResolver.ObstacleMoverCollisionCheck();
         collisionResolver.VerletMoverCollisionCheck();
     }
-    
+
+    private void UpdateAllSprites() {
+        foreach (VerletConstraint c in body.constraint) {
+            c.UpdateConstraintSprite();
+        }
+        mover.UpdateMoverSprite();
+        
+    }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
+using GXPEngine;
 
-public class VerletBody {
+public class VerletBody: GameObject {
 	public List<VerletPoint> point;
 	public List<VerletConstraint> constraint;
 
@@ -15,8 +16,9 @@ public class VerletBody {
 	}
 
 	public void AddConstraint(int p1, int p2) {
-		VerletConstraint c = new VerletConstraint (point [p1], point [p2]);
+		VerletConstraint c = new VerletConstraint (point[p1], point[p2]);
 		constraint.Add (c);
+		AddChild(c);
 	}
 
 	public void AddAcceleration(Vec2 acceleration) {
@@ -34,6 +36,7 @@ public class VerletBody {
 	public void UpdateConstraints() {
 		foreach (VerletConstraint c in constraint) {
 			c.Apply ();
+			c.UpdateConstraintSprite();
 		}
 	}
 	
