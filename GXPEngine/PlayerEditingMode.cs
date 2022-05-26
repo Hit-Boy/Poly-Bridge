@@ -88,11 +88,10 @@ public class PlayerEditingMode : GameObject
                 deltaVec = mousePos - pointOnePos;
 
                 // Check if mouse is past the boundary
-                if (deltaVec.Length() > boundary.radius)
+                if (deltaVec.Length() > boundary.radius - 40) // Adjust for image width
                 {
                     float distance = deltaVec.Length();
-                    deltaVec = mousePos - pointOnePos;
-                    deltaVec *= boundary.radius / distance;
+                    deltaVec *= (boundary.radius - 40) / distance;
                     pointTwoPos = pointOnePos + deltaVec;
                 }
                 else
