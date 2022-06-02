@@ -54,7 +54,7 @@ public class Level : GameObject
             hud.SetParent();
             if (startPoint != null)
             {
-                mover = new Mover(startPoint.position.x, startPoint.position.y, 20);
+                mover = new Mover(startPoint.position.x + 350, startPoint.position.y - 50, 20);
                 AddChild(mover);
             }
         }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="5" nextobjectid="9">
  <imagelayer id="2" name="Background">
-  <image source="menuBackground.png" width="1920" height="1080"/>
+  <image source="menus.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="Text">
   <object id="1" x="452.167" y="64.5" width="270" height="54">

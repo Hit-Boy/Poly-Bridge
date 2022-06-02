@@ -9,10 +9,11 @@ using TiledMapParser;
         public Vec2 position;
         public float radius;
 
-        public Obstacle(TiledObject obj = null) : base("circle.png"){
-        alpha = 0f;
-        radius = 90;
+    public Obstacle(TiledObject obj = null) : base("obs.png")
+    {
+        radius = 100;
         position = new Vec2(obj.X + radius, obj.Y + radius);
+        alpha = obj.GetIntProperty("alpha");
     }
 
     }

@@ -4,18 +4,21 @@
   <image source="checkers.png" trans="ff00ff" width="64" height="64"/>
  </tileset>
  <imagelayer id="2" name="Background">
-  <image source="Level_2.png" width="1920" height="1080"/>
+  <image source="Level2_Background.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="8" name="Obstacles">
-  <object id="12" type="Obstacle" x="708" y="240" width="306" height="310">
+  <object id="12" type="Obstacle" x="648" y="268" width="210" height="210">
+   <properties>
+    <property name="alpha" type="int" value="1"/>
+   </properties>
    <ellipse/>
   </object>
  </objectgroup>
  <objectgroup id="3" name="Start Point">
-  <object id="1" type="StartPoint" x="372" y="86" width="28" height="32"/>
+  <object id="1" type="StartPoint" x="50" y="286" width="200" height="175"/>
  </objectgroup>
  <objectgroup id="4" name="FinishPoint">
-  <object id="2" type="FinishPoint" x="1818.67" y="710.667" width="40" height="30"/>
+  <object id="2" type="FinishPoint" x="1664.67" y="646.667" width="200" height="175"/>
  </objectgroup>
  <objectgroup id="5" name="Text"/>
  <objectgroup id="6" name="Buttons">
@@ -34,13 +37,13 @@
  </objectgroup>
  <objectgroup id="7" name="RedZone">
   <object id="9" type="RedZone" x="674.667" y="554" width="808" height="298.667"/>
-  <object id="10" type="LevelPlatformPoint" x="1678" y="825">
+  <object id="10" type="LevelPlatformPoint" x="1536" y="835">
    <ellipse/>
   </object>
-  <object id="11" type="LevelPlatformPoint" x="278" y="476">
+  <object id="11" type="LevelPlatformPoint" x="328" y="446">
    <ellipse/>
   </object>
-  <object id="13" type="LevelPlatformPoint" x="280" y="764">
+  <object id="13" type="LevelPlatformPoint" x="126" y="884">
    <ellipse/>
   </object>
  </objectgroup>

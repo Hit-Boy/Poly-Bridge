@@ -7,35 +7,38 @@
   <image source="Level_1.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="8" name="Obstacles">
-  <object id="9" type="Obstacle" x="798" y="206" width="192" height="200">
+  <object id="9" type="Obstacle" x="812" y="218" width="192" height="200">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
-  <object id="10" type="Obstacle" x="630" y="604" width="192" height="200">
+  <object id="10" type="Obstacle" x="578" y="606" width="192" height="200">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
  </objectgroup>
  <objectgroup id="7" name="Platform Points">
-  <object id="7" type="LevelPlatformPoint" x="257.333" y="418.667">
+  <object id="7" type="LevelPlatformPoint" x="329.333" y="444.667">
    <ellipse/>
   </object>
-  <object id="14" type="LevelPlatformPoint" x="858.666" y="703.334">
+  <object id="14" type="LevelPlatformPoint" x="720.666" y="597.334">
    <ellipse/>
   </object>
-  <object id="8" type="LevelPlatformPoint" x="1672.67" y="652.667">
+  <object id="8" type="LevelPlatformPoint" x="1640.67" y="642.667">
    <ellipse/>
   </object>
-  <object id="12" type="LevelPlatformPoint" x="1670.67" y="802.667">
-   <ellipse/>
-  </object>
-  <object id="13" type="LevelPlatformPoint" x="1670.67" y="802.667">
+  <object id="12" type="LevelPlatformPoint" x="1640.67" y="706.667">
    <ellipse/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="Start Point">
-  <object id="3" type="StartPoint" x="302.667" y="214" width="34.6667" height="33.3333"/>
+  <object id="3" type="StartPoint" x="58.667" y="274" width="200" height="175"/>
  </objectgroup>
  <objectgroup id="5" name="Finish Point">
-  <object id="4" type="FinishPoint" x="1788" y="527.333" width="38.6667" height="28"/>
+  <object id="4" type="FinishPoint" x="1704" y="487.333" width="200" height="175"/>
  </objectgroup>
  <objectgroup id="6" name="Text"/>
  <objectgroup id="3" name="Buttons">

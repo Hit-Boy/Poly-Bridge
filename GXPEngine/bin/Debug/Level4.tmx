@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="11" nextobjectid="19">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="480" height="270" tilewidth="4" tileheight="4" infinite="0" nextlayerid="11" nextobjectid="20">
  <tileset firstgid="1" name="checkers" tilewidth="4" tileheight="4" tilecount="256" columns="16">
   <image source="checkers.png" trans="ff00ff" width="64" height="64"/>
  </tileset>
  <imagelayer id="2" name="Background">
-  <image source="Level_3.png" width="1920" height="1080"/>
+  <image source="Level3_Background.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="Text">
   <object id="7" type="Button" x="351.167" y="876.5" width="130.333" height="96.3333">
@@ -21,16 +21,28 @@
   </object>
  </objectgroup>
  <objectgroup id="9" name="Obstacles">
-  <object id="13" type="Obstacle" x="830" y="20" width="196" height="216">
+  <object id="13" type="Obstacle" x="796" y="34" width="196" height="216">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
-  <object id="16" type="Obstacle" x="964" y="234" width="196" height="216">
+  <object id="16" type="Obstacle" x="926" y="196" width="196" height="216">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
-  <object id="17" type="Obstacle" x="784" y="682" width="196" height="216">
+  <object id="17" type="Obstacle" x="782" y="702" width="196" height="216">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
-  <object id="18" type="Obstacle" x="964" y="842" width="196" height="216">
+  <object id="18" type="Obstacle" x="922" y="852" width="196" height="216">
+   <properties>
+    <property name="alpha" type="int" value="0"/>
+   </properties>
    <ellipse/>
   </object>
  </objectgroup>
@@ -39,17 +51,20 @@
   <object id="3" type="RedZone" x="1016" y="0" width="510" height="1082"/>
  </objectgroup>
  <objectgroup id="8" name="Platform Points">
-  <object id="4" type="LevelPlatformPoint" x="344" y="422">
+  <object id="4" type="LevelPlatformPoint" x="472" y="440">
    <ellipse/>
   </object>
-  <object id="5" type="LevelPlatformPoint" x="1696" y="892">
+  <object id="19" type="LevelPlatformPoint" x="950" y="702">
+   <ellipse/>
+  </object>
+  <object id="5" type="LevelPlatformPoint" x="1698" y="900">
    <ellipse/>
   </object>
  </objectgroup>
  <objectgroup id="6" name="Start Point">
-  <object id="1" type="StartPoint" x="424" y="348" width="46" height="48"/>
+  <object id="1" type="StartPoint" x="196" y="272" width="200" height="175"/>
  </objectgroup>
  <objectgroup id="7" name="Finish Point">
-  <object id="2" type="FinishPoint" x="1836" y="764" width="46" height="50"/>
+  <object id="2" type="FinishPoint" x="1728" y="734" width="200" height="175"/>
  </objectgroup>
 </map>
