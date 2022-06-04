@@ -27,14 +27,14 @@ public class Mover : Sprite{
     public float radius; //20
     public float mass = 1f;
 
-    public Mover(Vec2 newPosition, float radius) : base("ball.png", 2*radius/180, 2*radius/180, false) {
+    public Mover(Vec2 newPosition, float radius) : base("ball.png", 2*radius/128, 2*radius/128, false) {
         this.radius = radius;
         position = newPosition;
         velocity = new Vec2();
         acceleration = new Vec2();
     }
 
-    public Mover(float px, float py, float radius): base("ball.png", 2*radius/180, 2*radius/180, false)
+    public Mover(float px, float py, float radius): base("ball.png", 2*radius/128, 2*radius/128, false)
     {
         this.radius = radius;
         position.x = px;

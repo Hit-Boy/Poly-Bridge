@@ -1,4 +1,6 @@
-﻿public class VerletPoint{
+﻿using GXPEngine;
+
+public class VerletPoint : Sprite{
 	public float x {
 		get {
 			return position.x;
@@ -26,11 +28,14 @@
 	public Vec2 acceleration;
 	public readonly bool _fixed;
 
-	public VerletPoint(Vec2 newPosition, bool pFixed=false) {
+	public VerletPoint(Vec2 newPosition, bool pFixed=false) : base("Point.png", 0.4f, 0.4f, false){
+		
 		oldPosition = newPosition;
 		position = newPosition;
 		acceleration = new Vec2();
 		_fixed = pFixed;
+		SetOrigin(width/2, height/2);
+		SetXY(position.x, position.y);
 	}
 
 	public VerletPoint (float px, float py, bool pFixed=false) : this (new Vec2 (px, py), pFixed) {}
@@ -46,4 +51,9 @@
 
 		acceleration.SetXY (0, 0);
 	}
+	
+	public void UpdatePointSprite() {
+		SetXY(x, y);
+	}
+	
 }

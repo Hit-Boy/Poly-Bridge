@@ -10,7 +10,7 @@ public class VerletConstraint : Sprite{
 	public readonly float length;
 	public float mass = 0.5f;
 
-	public VerletConstraint(VerletPoint pOne, VerletPoint pTwo) : base("Platform.png", (pOne.position - pTwo.position).Length()/384, 0.5f, false){
+	public VerletConstraint(VerletPoint pOne, VerletPoint pTwo) : base("Platform.png", (pOne.position - pTwo.position).Length()/512, 0.25f, false){
 		one = pOne;
 		two = pTwo;
 		length = (one.position - two.position).Length ();

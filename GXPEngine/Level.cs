@@ -39,7 +39,6 @@ public class Level : GameObject
         playerEditingMode = new PlayerEditingMode(body);
         
         canvas = new Draw(1920, 1080);
-        AddChild(canvas);
         AddChild(playerEditingMode);
         playerEditingMode.SetParent();
         CreateLevel();
@@ -54,7 +53,7 @@ public class Level : GameObject
             hud.SetParent();
             if (startPoint != null)
             {
-                mover = new Mover(startPoint.position.x + 350, startPoint.position.y - 50, 20);
+                mover = new Mover(startPoint.position.x + 350, startPoint.position.y - 50, 40);
                 AddChild(mover);
             }
         }
@@ -62,14 +61,7 @@ public class Level : GameObject
         if(mover != null)
             collisionResolver = new CollisionResolver(body, mover, obstacles);
     }
-    
 
-    void DrawAll() {
-        canvas.Clear (System.Drawing.Color.Transparent);
-        canvas.DrawVerlet(body);
-        canvas.DrawMover(mover);
-    }
-    
     void CreateLevel()
     {
         loader.addColliders = false;
@@ -92,7 +84,6 @@ public class Level : GameObject
     {
         // Game is in Play Mode
         playerEditingMode.isEditing = false;
-        playerEditingMode.ClearCanvas();
     }
 
     public void GameStateEdit()
@@ -131,7 +122,6 @@ public class Level : GameObject
                     if(!won)
                         LevelWonScreen();
                 UpdateAllSprites();
-                //DrawAll();
             }
             
         }
@@ -149,6 +139,9 @@ public class Level : GameObject
     private void UpdateAllSprites() {
         foreach (VerletConstraint c in body.constraint) {
             c.UpdateConstraintSprite();
+        }
+        foreach (VerletPoint p in body.point) {
+            p.UpdatePointSprite();
         }
         mover.UpdateMoverSprite();
         

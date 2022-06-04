@@ -11,14 +11,16 @@ public class VerletBody: GameObject {
 		constraint = new List<VerletConstraint> ();
 	}
 
-	public void AddPoint(VerletPoint newPoint) {
-		point.Add(newPoint);
+	public void AddPoint(Vec2 Position, bool pFixed) {
+		VerletPoint p = new VerletPoint (Position, pFixed);
+		point.Add(p);
+		AddChild(p);
 	}
 
 	public void AddConstraint(int p1, int p2) {
 		VerletConstraint c = new VerletConstraint (point[p1], point[p2]);
 		constraint.Add (c);
-		AddChild(c);
+		AddChildAt(c, 0);
 	}
 
 	public void AddAcceleration(Vec2 acceleration) {
@@ -36,7 +38,6 @@ public class VerletBody: GameObject {
 	public void UpdateConstraints() {
 		foreach (VerletConstraint c in constraint) {
 			c.Apply ();
-			c.UpdateConstraintSprite();
 		}
 	}
 	

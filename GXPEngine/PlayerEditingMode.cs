@@ -11,7 +11,6 @@ public class PlayerEditingMode : GameObject
     RedZone redZone;
 
     VerletBody platformBody = new VerletBody();
-    VerletDraw drawBody = new VerletDraw(1920, 1080);
 
     int pointOneIndex;
     int pointTwoIndex;
@@ -34,7 +33,6 @@ public class PlayerEditingMode : GameObject
     List<Platform> platforms = new List<Platform>();
     public PlayerEditingMode(VerletBody platformBody) {
         this.platformBody = platformBody;
-        AddChild(drawBody);
     }
 
     void FindRedzone() {
@@ -48,10 +46,9 @@ public class PlayerEditingMode : GameObject
         if (!firstPointsDraw) {
             foreach (LevelPlatformPoint existPoint in existingPoints)
             {
-                platformBody.AddPoint(new VerletPoint(existPoint.position.x, existPoint.position.y, true));
+                platformBody.AddPoint(existPoint.position, true);
                 if (platformBody.point.Count == 2)
                 {
-                    drawBody.DrawVerlet(platformBody);
                     firstPointsDraw = true;
                 }
             }
@@ -112,7 +109,7 @@ public class PlayerEditingMode : GameObject
 
                 if (!pointFound)
                 {
-                    platformBody.point.Add(new VerletPoint(pointTwoPos.x, pointTwoPos.y, false));
+                    platformBody.AddPoint(pointTwoPos, false);
                     pointTwoIndex = platformBody.point.Count - 1;
                 }
                 pointFound = false;
@@ -121,7 +118,6 @@ public class PlayerEditingMode : GameObject
                     platformBody.AddConstraint(pointOneIndex, pointTwoIndex);
                     platformCount--;
                 }
-                drawBody.DrawVerlet(platformBody);
                 RemoveChild(boundary);
             }
             pressedLastFrame = false;
@@ -141,7 +137,6 @@ public class PlayerEditingMode : GameObject
                 if (deltaVec.Length() <= midPointDistance)
                 {
                     platformBody.constraint.Remove(cons);
-                    drawBody.DrawVerlet(platformBody);
                 }
             }
         }
@@ -151,12 +146,7 @@ public class PlayerEditingMode : GameObject
     {
         level = (Level)this.parent;
     }
-
-
-    public void ClearCanvas() 
-    {
-        drawBody.parent = null;
-    }
+    
     void Update()
     {
         CreateObject();
