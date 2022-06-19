@@ -48,6 +48,7 @@ class Button : GameObject
         }else if(action == "Back")
         {
             ((MyGame)game).LoadLevel("MainMenu.tmx", true);
+            ((MyGame)game).levelTracker = 0;
         }
     }
 

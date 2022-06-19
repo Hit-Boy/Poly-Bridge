@@ -81,6 +81,11 @@ public class PlayerEditingMode : GameObject
 
             if (Input.GetMouseButtonUp(0) && isEditing && pointCreated)
             {
+                if ((pointOnePos - mousePos).Length() < 30)
+                {
+                    RemoveChild(boundary);
+                    return;
+                }
                 pointDistance = 30;
                 deltaVec = mousePos - pointOnePos;
 
