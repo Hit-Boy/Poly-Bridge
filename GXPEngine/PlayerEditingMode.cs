@@ -27,7 +27,7 @@ public class PlayerEditingMode : GameObject
     public bool isEditing = true;
 
 
-    public int platformCount = 100;
+    public int platformCount = 20;
 
     List<LevelPlatformPoint> existingPoints = new List<LevelPlatformPoint>();
     List<Platform> platforms = new List<Platform>();

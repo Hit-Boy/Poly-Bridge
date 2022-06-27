@@ -56,6 +56,6 @@
   </object>
  </objectgroup>
  <objectgroup id="9" name="Red Zone">
-  <object id="11" type="RedZone" x="1086" y="576" width="314" height="526"/>
+  <object id="11" type="RedZone" x="1086" y="320" width="314" height="782"/>
  </objectgroup>
 </map>
